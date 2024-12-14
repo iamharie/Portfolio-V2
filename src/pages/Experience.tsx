@@ -1,13 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { FaLinkedin, FaGithub, FaFacebookSquare } from "react-icons/fa";
 
-const ServicesPage = () => {
+const Experience = () => {
   const services = [
     {
       title: "Manufacturing Excellence",
       description:
         "State-of-the-art manufacturing facilities with advanced automation and quality control.",
-      icon: "🏭",
+      icon: <FaLinkedin />,
     },
     {
       title: "Assembly",
@@ -38,7 +39,7 @@ const ServicesPage = () => {
           transition={{ duration: 0.8 }}
           className="text-text-light dark:text-text-dark"
         >
-          <h1 className="text-4xl font-bold mb-12 text-center">Our Services</h1>
+          <h1 className="text-4xl font-bold mb-12 text-center">Experience</h1>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {services.map((service, index) => (
               <motion.div
@@ -62,4 +63,4 @@ const ServicesPage = () => {
   );
 };
 
-export default ServicesPage;
+export default Experience;

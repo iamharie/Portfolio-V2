@@ -1,20 +1,19 @@
-import React from "react";
+// import React from "react";
 import { motion } from "framer-motion";
-import hubzone from "../assets/hubzone.png";
-import iso from "../assets/iso.png";
+import azure from "../assets/azure.png";
 
 const Endorsed = () => {
   const endorsements = [
     {
       id: 1,
-      image: hubzone,
+      image: azure,
       alt: "Technology Partner Logo 1",
     },
-    {
-      id: 2,
-      image: iso,
-      alt: "Technology Partner Logo 2",
-    },
+    // {
+    //   id: 2,
+    //   image: "",
+    //   alt: "Technology Partner Logo 2",
+    // },
   ];
 
   return (
@@ -27,7 +26,7 @@ const Endorsed = () => {
           className="text-center"
         >
           <h2 className="text-3xl font-bold mb-12 text-text-light dark:text-text-dark">
-            Trusted By Industry Leaders
+            Certified
           </h2>
           <div className="flex justify-center items-center space-x-12">
             {endorsements.map((endorsement) => (

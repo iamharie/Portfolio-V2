@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { FaGithub } from "react-icons/fa";
 
 import ThemeToggle from "./ThemeToggle.tsx";
 
@@ -27,7 +28,7 @@ const Navbar = () => {
               alt="Etezazi Industries"
               className="w-32 h-14  bg-secondary-light rounded-lg"
             /> */}
-            <p className="bg-secondary dark:bg-secondary-light text-text-dark dark:text-text-light rounded-lg text-sm sm:text-base md:text-lg lg:text-xl px-2 py-1">
+            <p className=" dark:bg-secondary-light text-gray dark:text-text-light rounded-lg text-sm sm:text-base md:text-lg lg:text-xl px-2 py-1">
               Hariharan Mohan
             </p>
           </NavLink>
@@ -45,14 +46,14 @@ const Navbar = () => {
               Home
             </NavLink>
             <NavLink
-              to="/services"
+              to="/experience"
               className={({ isActive }) =>
                 isActive
                   ? "text-accent font-semibold transition-colors"
                   : "hover:text-accent transition-colors"
               }
             >
-              Services
+              Experience
             </NavLink>
             <NavLink
               to="/team"
@@ -75,10 +76,24 @@ const Navbar = () => {
               Contact
             </NavLink>
             <ThemeToggle />
+            <a
+              href="https://github.com/iamharie"
+              target="_blank"
+              className="flex flex-col items-center hover:text-accent transition-colors cursor-pointer"
+            >
+              <FaGithub size={20} />
+            </a>
           </div>
 
           <div className="md:hidden flex items-center space-x-4">
             <ThemeToggle />
+            <a
+              href="https://github.com/iamharie"
+              // target="_blank"
+              className="flex flex-col items-center hover:text-accent transition-colors cursor-pointer"
+            >
+              <FaGithub size={20} />
+            </a>
             <button
               className="text-text-light dark:text-text-dark focus:outline-none"
               onClick={toggleMenu}
@@ -125,7 +140,7 @@ const Navbar = () => {
                   Home
                 </NavLink>
                 <NavLink
-                  to="/services"
+                  to="/experience"
                   className={({ isActive }) =>
                     isActive
                       ? "text-accent font-semibold transition-colors"
@@ -133,7 +148,7 @@ const Navbar = () => {
                   }
                   onClick={closeMenu}
                 >
-                  Services
+                  Experience
                 </NavLink>
                 <NavLink
                   to="/team"

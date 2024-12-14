@@ -1,5 +1,5 @@
-import React from "react";
-import { FaLinkedin, FaTwitterSquare, FaFacebookSquare } from "react-icons/fa";
+// import React from "react";
+import { FaLinkedin, FaGithub, FaFacebookSquare } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -19,22 +19,22 @@ const Footer = () => {
             <h3 className="text-xl font-bold mb-4">Follow Me</h3>
             <div className="flex space-x-4">
               <a
-                href={null}
+                href="https://www.linkedin.com/in/hariee/"
                 className="flex flex-col items-center hover:text-accent transition-colors cursor-pointer"
               >
                 <FaLinkedin size={20} />
                 <span className="mt-2 text-sm">LinkedIn</span>
               </a>
               <a
-                href={null}
+                href="https://github.com/iamharie"
                 className="flex flex-col items-center hover:text-accent transition-colors cursor-pointer"
               >
-                <FaTwitterSquare size={20} />
-                <span className="mt-2 text-sm">Twitter</span>
+                <FaGithub size={20} />
+                <span className="mt-2 text-sm">GitHub</span>
               </a>
 
               <a
-                href={null}
+                href=""
                 className="flex flex-col items-center hover:text-accent transition-colors cursor-pointer"
               >
                 <FaFacebookSquare size={20} />

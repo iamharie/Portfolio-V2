@@ -6,7 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // import Navbar from "./components/Navbar";
 // import Footer from "./components/Footer";
 import Home from "./pages/Home";
-import ServicesPage from "./pages/ServicesPage";
+import Experience from "./pages/Experience";
 import ContactPage from "./pages/ContactPage";
 import TeamPage from "./pages/TeamPage";
 import Root from "./pages/Root";
@@ -19,7 +19,7 @@ export default function App() {
       element: <Root />,
       children: [
         { index: true, element: <Home /> },
-        { path: "services", element: <ServicesPage /> },
+        { path: "experience", element: <Experience /> },
         { path: "team", element: <TeamPage /> },
         { path: "skills", element: <IconCloudDemo /> },
         { path: "contact", element: <ContactPage /> },

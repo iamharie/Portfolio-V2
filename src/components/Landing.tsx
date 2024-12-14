@@ -1,9 +1,7 @@
 // import React from "react";
 import { motion } from "framer-motion";
-// import Carousel from "./carousel/Carousel";
 import { useNavigate } from "react-router-dom";
 import { IconCloudDemo } from "./test-versions/IconCloudDemo";
-// import Typical from "react-typical";
 import TypewriterMotion from "./animation/TypewriterMotion";
 
 const Landing = () => {
@@ -20,11 +18,12 @@ const Landing = () => {
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 text-text-white dark:text-text-dark ">
               <TypewriterMotion text="Hi I am Hari" speed={0.1} />
-              {/* <Typical steps={["Hi I am Hari", 5000]} wrapper="span" /> */}
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-text-white dark:text-text-dark">
-              <TypewriterMotion text="Software Engineer 👨🏼‍💻" speed={0.15} />
-              {/* <Typical steps={["Software Engineer 👨🏼‍💻", 7000]} wrapper="span" /> */}
+              <TypewriterMotion
+                text="Software Development Engineer!"
+                speed={0.15}
+              />
             </p>
             <motion.button
               onClick={handleNavigate}

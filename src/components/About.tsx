@@ -11,48 +11,36 @@ const About = () => {
           transition={{ duration: 0.8 }}
           className="max-w-4xl mx-auto text-text-light dark:text-text-dark"
         >
-          <h2 className="text-4xl font-bold mb-8 text-center">About Us</h2>
+          <h2 className="text-4xl font-bold mb-8 text-center">About Me</h2>
           <div className="space-y-6">
             <p className="text-lg mb-10">
-              Etezazi Industries, Inc., is a diverse manufacturing company
-              specializing in advanced solutions for precision engineering and
-              manufacturing. Our expertise encompasses a wide range of
-              capabilities, including CNC Mills, Lathes, Mill-Turns, and
-              Mechanical Brakes. These tools enable us to manufacture complex
-              multi-axis components and sheet metal parts, meticulously tailored
-              to meet our clients' specific needs and requirements.
+              I am a dedicated Software Engineer and Full Stack Developer with a
+              passion for crafting innovative solutions and exploring the latest
+              technologies. My academic journey includes a Bachelor's and a
+              Master's degree in Computer Science, which have solidified my
+              foundation in problem-solving and software development.
               <br />
               <br />
-              At Etezazi Industries, we are committed to excellence through
-              workplace organization and standardized procedures, guided by the
-              6S philosophy. This approach helps us reduce waste, enhance
-              safety, and optimize operational efficiency. By partnering with
-              us, clients benefit from a team of skilled professionals,
-              innovative technologies, and a proactive mindset to address
-              challenges in a fast-paced and dynamic industry.
+              Beyond coding, I am deeply intrigued by electronic gadgets and
+              enjoy staying up-to-date with technological advancements. I thrive
+              on turning ideas into functional, impactful applications and am
+              always eager to tackle new challenges in the ever-evolving tech
+              landscape.
             </p>
           </div>
           <div className="bg-secondary-light dark:bg-secondary p-6 rounded-lg mt-8">
-            <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
+            <h3 className="text-2xl font-bold mb-4">My Vision</h3>
             <p>
-              At Etezazi Industries, Inc., our mission is to consistently
-              deliver excellence by adhering to the highest standards of quality
-              and innovation. We strive to meet and exceed client expectations
-              by maintaining AS9100D-certified processes, ensuring reliability
-              and trust in every aspect of our operations.
+              I believe that learning is a continuous and dynamic journey, not a
+              linear process. My vision is to work with like-minded individuals
+              who share a passion for innovation and growth, fostering
+              collaboration that drives excellence.
               <br />
-              <br /> We are committed to investing in state-of-the-art equipment
-              and facilities, coupled with fostering a team of seasoned
-              professionals and degreed engineers. This approach equips us with
-              the expertise and technology necessary to provide cutting-edge
-              solutions and superior products in a rapidly evolving, highly
-              technical industry.
-              <br />
-              <br /> Guided by the principles of the 6S philosophy, we focus on
-              creating a lean, efficient, and safe work environment. By
-              simplifying processes, reducing waste, and improving safety, we
-              enhance quality and efficiency to consistently deliver value to
-              our clients.
+              <br /> I aspire to contribute to meaningful projects that add
+              tangible value to businesses while providing opportunities for
+              personal and professional development. By embracing challenges and
+              leveraging my skills, I aim to create impactful solutions that
+              make a difference in the ever-evolving world of technology.
               <br />
             </p>
           </div>

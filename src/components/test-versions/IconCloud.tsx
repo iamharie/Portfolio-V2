@@ -11,15 +11,15 @@ import {
 } from "react-icon-cloud";
 
 export const cloudProps: Omit<ICloud, "children"> = {
-  containerProps: {
-    style: {
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      width: "100%",
-      paddingTop: 40,
-    },
-  },
+  // containerProps: {
+  //   // style: {
+  //   //   display: "flex",
+  //   //   justifyContent: "center",
+  //   //   alignItems: "center",
+  //   //   width: "100%",
+  //   //   paddingTop: 20,
+  //   // },
+  // },
   options: {
     reverse: true,
     depth: 1,

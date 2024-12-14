@@ -1,10 +1,11 @@
-import "./App.css";
-
+import { IconCloudDemo } from "./components/test-versions/IconCloudDemo";
+// import "./App.css";
 export default function App() {
   return (
     <>
-      <h1>Work in progress...</h1>
-      <h2>Dev Portfolio</h2>
+      <h1 className="text-center">Work in progress...</h1>
+      <h2 className="text-center">Dev Portfolio</h2>
+      <IconCloudDemo />
     </>
   );
 }

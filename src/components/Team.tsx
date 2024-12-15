@@ -1,9 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaGithub, FaEnvelope } from "react-icons/fa";
-// import Amir from "../assets/img-two.jpg";
-// import Etezazi from "../assets/img-one.jpg";
-// import Hessam from "../assets/img-three.jpg";
 
 const TeamMember = ({ member, index }) => {
   return (

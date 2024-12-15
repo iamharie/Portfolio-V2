@@ -20,6 +20,7 @@ const Footer = () => {
             <div className="flex space-x-4">
               <a
                 href="https://www.linkedin.com/in/hariee/"
+                target="_blank"
                 className="flex flex-col items-center hover:text-accent transition-colors cursor-pointer"
               >
                 <FaLinkedin size={20} />
@@ -27,6 +28,7 @@ const Footer = () => {
               </a>
               <a
                 href="https://github.com/iamharie"
+                target="_blank"
                 className="flex flex-col items-center hover:text-accent transition-colors cursor-pointer"
               >
                 <FaGithub size={20} />
@@ -35,6 +37,7 @@ const Footer = () => {
 
               <a
                 href=""
+                target="_blank"
                 className="flex flex-col items-center hover:text-accent transition-colors cursor-pointer"
               >
                 <FaFacebookSquare size={20} />

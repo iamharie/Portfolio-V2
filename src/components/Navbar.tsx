@@ -19,7 +19,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-secondary-light dark:bg-secondary text-text-light dark:text-text-dark py-2 sticky top-0 z-50">
+    <nav className="bg-secondary-light dark:bg-secondary text-text-light dark:text-text-dark py-4 sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           <NavLink to="/" className="text-2xl font-bold">
@@ -28,7 +28,7 @@ const Navbar = () => {
               alt="Etezazi Industries"
               className="w-32 h-14  bg-secondary-light rounded-lg"
             /> */}
-            <p className=" dark:bg-secondary-light text-gray dark:text-text-light rounded-lg text-sm sm:text-base md:text-lg lg:text-xl px-2 py-1">
+            <p className=" dark:bg-secondary-light text- dark:text-text-light rounded-lg text-sm sm:text-base md:text-lg lg:text-xl px-2 py-1">
               Hariharan Mohan
             </p>
           </NavLink>
@@ -89,7 +89,7 @@ const Navbar = () => {
             <ThemeToggle />
             <a
               href="https://github.com/iamharie"
-              // target="_blank"
+              target="_blank"
               className="flex flex-col items-center hover:text-accent transition-colors cursor-pointer"
             >
               <FaGithub size={20} />

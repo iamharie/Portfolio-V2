@@ -1,16 +1,12 @@
-import { IconCloudDemo } from "./components/test-versions/IconCloudDemo";
 // import "./App.css";
-
-// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-// import Navbar from "./components/Navbar";
-// import Footer from "./components/Footer";
+import { ThemeProvider } from "./context/ThemeContext";
 import Home from "./pages/Home";
 import Experience from "./pages/Experience";
 import ContactPage from "./pages/ContactPage";
 import TeamPage from "./pages/TeamPage";
 import Root from "./pages/Root";
-import { ThemeProvider } from "./context/ThemeContext";
+import { IconCloudDemo } from "./components/test-versions/IconCloudDemo";
 
 export default function App() {
   const router = createBrowserRouter([

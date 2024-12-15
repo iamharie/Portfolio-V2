@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
-const TypewriterMotion = ({ text, speed = 0.1 }) => {
+interface TypewriterMotionProps {
+  text: string;
+  speed?: number;
+}
+
+const TypewriterMotion: React.FC<TypewriterMotionProps> = ({
+  text,
+  speed = 0.1,
+}) => {
   const textVariants = {
     hidden: { opacity: 0 },
-    visible: (i) => ({
+    visible: (i: number) => ({
       opacity: 1,
       transition: {
         delay: i * speed,

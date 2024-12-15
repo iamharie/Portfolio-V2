@@ -1,35 +1,68 @@
 import { motion } from "framer-motion";
-import { FaLinkedin } from "react-icons/fa";
 
 const Experience = () => {
   const services = [
+    // {
+    //   title: "Surge Technologies Inc",
+    //   description:
+    //     "Optimized UI/UX for an evidence management system using React, TypeScript, and Redux, enhancing user experience by 10% and reducing API calls by 8%. Implemented secure RESTful API integration, optimized accessibility for WCAG compliance, and improved data retrieval by 30% using SQL Server and Spring Boot. Streamlined CI/CD pipelines with GitHub, Jenkins, and AWS, accelerating deployments while ensuring robust security with JWT and Spring Security.",
+    //   icon: "🏢",
+    // },
     {
-      title: "Manufacturing Excellence",
+      title: "Porter Lee Corporation",
       description:
-        "State-of-the-art manufacturing facilities with advanced automation and quality control.",
-      icon: <FaLinkedin />,
+        "Optimized UI/UX for an evidence management system using React, TypeScript, and Redux, enhancing user experience by 10% and reducing API calls by 8%. Implemented secure RESTful API integration, optimized accessibility for WCAG compliance, and improved data retrieval by 30% using SQL Server and Spring Boot. Streamlined CI/CD pipelines with GitHub, Jenkins, and AWS, accelerating deployments while ensuring robust security with JWT and Spring Security.",
+      icon: "🏢",
     },
     {
-      title: "Assembly",
+      title: "Wichita State University",
       description:
-        "Precision assembly services to ensure seamless integration of components, delivering reliable and high-quality finished products.",
-      icon: "⚙️",
+        "Developed reusable UI components and optimized state management using React Context API and Next.js, enhancing SEO and reducing load times by 20%. Improved UI/UX with Material UI and Figma, boosting user retention by 5%. Built scalable RESTful APIs with Node.js and MongoDB, increasing database efficiency by 30%. Ensured high-quality code with React Testing Library and thorough design reviews.",
+      icon: "🏢",
     },
     {
-      title: "Inventory Management",
+      title: "Accenture",
       description:
-        "Efficient inventory management solutions, including kitting, Vendor-Owned Inventory (VOI), and Vendor-Managed Inventory (VMI), to streamline supply chain operations and ensure timely delivery of high-quality components.",
-      icon: "📊",
-    },
-    {
-      title: "Delivery and Tracking",
-      description:
-        "Reliable delivery and tracking services to ensure timely, secure shipments with real-time updates for complete transparency and customer satisfaction.",
-      icon: "✓",
+        "Developed an automated reporting tool using React, saving 2 hours daily and reducing costs by 30%. Led a critical server migration, minimizing downtime by 15%. Built RESTful APIs with .NET and connected to SQL Server using Entity Framework for efficient data handling. Improved onboarding efficiency by 30% with training materials and ensured software quality with 100% issue resolution through unit testing.",
+      icon: "🏢",
     },
   ];
 
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
   return (
+    // <div className="container mx-auto px-4 py-8">
+    //   <h2 className="text-3xl font-bold text-center mb-8">
+    //     Professional Journey
+    //   </h2>
+    //   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+    //     {services.map((service, index) => (
+    //       <motion.div
+    //         key={index}
+    //         className="bg-secondary-light dark:bg-secondary rounded-lg overflow-hidden shadow-lg p-6"
+    //         initial="hidden"
+    //         animate="visible"
+    //         variants={cardVariants}
+    //         transition={{ delay: index * 0.1, duration: 0.2 }}
+    //         whileHover={{ scale: 1.15 }}
+    //       >
+    //         <div className="flex items-center justify-center mb-4 text-4xl">
+    //           <a className="hover:text-accent transition-colors cursor-pointer">
+    //             {service.icon}
+    //           </a>
+    //         </div>
+    //         <h3 className="text-xl font-bold text-text-light dark:text-text-dark mb-2">
+    //           {service.title}
+    //         </h3>
+    //         <p className="text-text-light dark:text-text-dark">
+    //           {service.description}
+    //         </p>
+    //       </motion.div>
+    //     ))}
+    //   </div>
+    // </div>
     <section className="py-20 bg-primary-light dark:bg-primary min-h-screen">
       <div className="container mx-auto px-4">
         <motion.div
@@ -38,7 +71,9 @@ const Experience = () => {
           transition={{ duration: 0.8 }}
           className="text-text-light dark:text-text-dark"
         >
-          <h1 className="text-4xl font-bold mb-12 text-center">Experience</h1>
+          <h1 className="text-4xl font-bold mb-12 text-center">
+            Professional Journey
+          </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {services.map((service, index) => (
               <motion.div

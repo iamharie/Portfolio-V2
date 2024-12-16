@@ -48,7 +48,7 @@ const teamMembers = [
     name: "Portfolio",
     // position: "Deployed",
     description: "A portfolio website built with HTML5, CSS3 and Javascript",
-    // github: "https://github.com/iamharie",
+    github: "https://github.com/iamharie/My-Portfolio",
     url: "https://hariharanmohan-portfolio.netlify.app ",
   },
   {

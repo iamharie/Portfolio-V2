@@ -8,7 +8,7 @@ import image7 from "../../assets/projectCover/Seven-Login-Form.webp";
 import image8 from "../../assets/projectCover/Eight-QuizApp.webp";
 import image9 from "../../assets/projectCover/Nine-Tic Tac Toe.webp";
 import image10 from "../../assets/projectCover/Ten-ToDo List.webp";
-import image11 from "../../assets/projectCover/Eleven-WeatherApp.png";
+import image11 from "../../assets/projectCover/Eleven-weatherApp.png";
 import image12 from "../../assets/projectCover/Twelve-portfolio.png";
 
 export const projectContent = `Explore my curated portfolio of projects, showcasing innovative

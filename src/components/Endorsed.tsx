@@ -9,11 +9,6 @@ const Endorsed = () => {
       image: azure,
       alt: "Technology Partner Logo 1",
     },
-    // {
-    //   id: 2,
-    //   image: "",
-    //   alt: "Technology Partner Logo 2",
-    // },
   ];
 
   return (

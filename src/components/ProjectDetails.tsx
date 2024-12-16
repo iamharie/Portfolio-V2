@@ -4,11 +4,11 @@ import { FaGithub, FaExternalLinkSquareAlt } from "react-icons/fa";
 interface ProjectDetailsProps {
   member: {
     name: string;
-    position: string;
+    position?: string | undefined;
     description: string;
-    image: string | any;
-    github?: string;
-    url?: string;
+    image: string;
+    github?: string | undefined;
+    url?: string | undefined;
   };
   index: number;
 }
@@ -18,7 +18,8 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ member, index }) => {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.2 }}
+      transition={{ delay: index * 0.1, duration: 0.3 }}
+      viewport={{ once: true }}
       className="bg-secondary-light dark:bg-secondary rounded-lg overflow-hidden shadow-lg"
     >
       {/* <div className="aspect-w-1 aspect-h-1"> */}

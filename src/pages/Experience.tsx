@@ -1,13 +1,8 @@
 import { motion } from "framer-motion";
+import TypewriterMotion from "../components/animation/TypewriterMotion";
 
 const Experience = () => {
   const services = [
-    // {
-    //   title: "Surge Technologies Inc",
-    //   description:
-    //     "Optimized UI/UX for an evidence management system using React, TypeScript, and Redux, enhancing user experience by 10% and reducing API calls by 8%. Implemented secure RESTful API integration, optimized accessibility for WCAG compliance, and improved data retrieval by 30% using SQL Server and Spring Boot. Streamlined CI/CD pipelines with GitHub, Jenkins, and AWS, accelerating deployments while ensuring robust security with JWT and Spring Security.",
-    //   icon: "🏢",
-    // },
     {
       title: "Porter Lee Corporation",
       description:
@@ -28,10 +23,10 @@ const Experience = () => {
     },
   ];
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-  };
+  // const cardVariants = {
+  //   hidden: { opacity: 0, y: 20 },
+  //   visible: { opacity: 1, y: 0 },
+  // };
   return (
     // <div className="container mx-auto px-4 py-8">
     //   <h2 className="text-3xl font-bold text-center mb-8">
@@ -72,7 +67,7 @@ const Experience = () => {
           className="text-text-light dark:text-text-dark"
         >
           <h1 className="text-4xl font-bold mb-12 text-center">
-            Professional Journey
+            <TypewriterMotion text="Professional Journey" speed={0.1} />
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {services.map((service, index) => (

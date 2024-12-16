@@ -32,8 +32,7 @@ const projectCover = {
 };
 
 // export default projectCover;
-
-const teamMembers = [
+const projectDetails = [
   {
     image: projectCover.image1,
     name: "Etezazi Industries",
@@ -140,4 +139,4 @@ const teamMembers = [
   },
 ];
 
-export default teamMembers;
+export default projectDetails;

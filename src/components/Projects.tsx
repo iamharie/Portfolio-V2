@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import TypewriterMotion from "./animation/TypewriterMotion";
-import teamMembers, { projectContent } from "./models/projectCover";
+import projectDetails, { projectContent } from "./models/projectCover";
 import ProjectDetails from "./ProjectDetails";
 
 const Projects = () => {
@@ -21,7 +21,7 @@ const Projects = () => {
           </p>
         </motion.div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {teamMembers.map((member, index) => (
+          {projectDetails.map((member, index) => (
             <ProjectDetails key={index} member={member} index={index} />
           ))}
         </div>

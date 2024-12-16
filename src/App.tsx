@@ -4,9 +4,8 @@ import { ThemeProvider } from "./context/ThemeContext";
 import Home from "./pages/Home";
 import Experience from "./pages/Experience";
 import ContactPage from "./pages/ContactPage";
-import TeamPage from "./pages/TeamPage";
+import ProjectPage from "./pages/ProjectPage";
 import Root from "./pages/Root";
-import { IconCloudDemo } from "./components/test-versions/IconCloudDemo";
 
 export default function App() {
   const router = createBrowserRouter([
@@ -16,8 +15,8 @@ export default function App() {
       children: [
         { index: true, element: <Home /> },
         { path: "experience", element: <Experience /> },
-        { path: "team", element: <TeamPage /> },
-        { path: "skills", element: <IconCloudDemo /> },
+        { path: "team", element: <ProjectPage /> },
+        // { path: "skills", element: <IconCloudDemo /> },
         { path: "contact", element: <ContactPage /> },
       ],
     },
@@ -28,10 +27,6 @@ export default function App() {
       <ThemeProvider>
         <RouterProvider router={router} />
       </ThemeProvider>
-
-      {/* <h1 className="text-center">Work in progress...</h1>
-      <h2 className="text-center">Dev Portfolio</h2>
-      <IconCloudDemo /> */}
     </>
   );
 }

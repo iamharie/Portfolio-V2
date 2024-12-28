@@ -1,13 +1,19 @@
 // import React from "react";
 import { motion } from "framer-motion";
 import azure from "../assets/azure.png";
+import AWS from "../assets/AWS.png";
 
 const Endorsed = () => {
   const endorsements = [
     {
       id: 1,
       image: azure,
-      alt: "Technology Partner Logo 1",
+      alt: "Azure certification logo",
+    },
+    {
+      id: 2,
+      image: AWS,
+      alt: "AWS Developer Associate certification logo",
     },
   ];
 
@@ -35,7 +41,7 @@ const Endorsed = () => {
                 <img
                   src={endorsement.image}
                   alt={endorsement.alt}
-                  className="w-full h-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                  className="w-full h-full object-contain filter hover:grayscale-0 transition-all duration-300"
                 />
               </motion.div>
             ))}

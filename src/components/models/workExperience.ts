@@ -1,9 +1,9 @@
 export const jobDetails = [
   {
     title: "Surge Technology Solutions Inc",
-    role: "Software Engineer",
+    role: "Software Engineer 🟢",
     description:
-      "Optimized UI/UX for an evidence management system using React, TypeScript, and Redux, enhancing user experience by 10% and reducing API calls by 8%. Implemented secure RESTful API integration, optimized accessibility for WCAG compliance, and improved data retrieval by 30% using SQL Server and Spring Boot. Streamlined CI/CD pipelines with GitHub, Jenkins, and AWS, accelerating deployments while ensuring robust security with JWT and Spring Security.",
+      "I currently specialize in developing robust software solutions, bringing expertise in both front-end and back-end development. On the front end, I craft dynamic and responsive user interfaces using React and TypeScript, ensuring seamless and intuitive user experiences. On the back end, I work with the Java Spring Framework to build scalable and secure applications, with a strong focus on designing and implementing efficient REST APIs.I'm passionate about writing clean, maintainable code and optimizing performance to deliver high-quality, end-to-end solutions that align with business goals and user needs.",
     icon: "🏢",
   },
   {

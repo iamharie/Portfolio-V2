@@ -16,7 +16,7 @@ export default {
         accent: "#228be6",
         text: {
           dark: "#ffffff",
-          light: "#495057", // Darker gray for better contrast on light background
+          light: "#495057",
         },
       },
     },

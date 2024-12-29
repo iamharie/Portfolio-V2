@@ -10,28 +10,28 @@ export const jobDetails = [
     title: "Porter Lee Corporation",
     role: "Software Developer Intern",
     description:
-      "Optimized UI/UX for an evidence management system using React, TypeScript, and Redux, enhancing user experience by 10% and reducing API calls by 8%. Implemented secure RESTful API integration, optimized accessibility for WCAG compliance, and improved data retrieval by 30% using SQL Server and Spring Boot. Streamlined CI/CD pipelines with GitHub, Jenkins, and AWS, accelerating deployments while ensuring robust security with JWT and Spring Security.",
+      "Enhanced UI/UX for an evidence management system using React, TypeScript, and Redux, improving user experience and reducing unnecessary API calls. Developed secure RESTful API integrations, ensured WCAG-compliant accessibility, and optimized data retrieval processes with SQL Server and Spring Boot. Streamlined CI/CD pipelines with GitHub, Jenkins, and AWS, ensuring efficient deployments and robust security with JWT and Spring Security.",
     icon: "🏢",
   },
   {
     title: "Wichita State University",
     role: "Graduate Research Assistant",
     description:
-      "Developed reusable UI components and optimized state management using React Context API and Next.js, enhancing SEO and reducing load times by 20%. Improved UI/UX with Material UI and Figma, boosting user retention by 5%. Built scalable RESTful APIs with Node.js and MongoDB, increasing database efficiency by 30%. Ensured high-quality code with React Testing Library and thorough design reviews.",
+      "I conducted network infrastructure audits, managed telecommunications inventory, processed work orders, and collaborated on installing and verifying network connections, ensuring seamless coordination and efficient execution. Additionally, I developed features for a responsive web application to replace a legacy Excel-based system, streamlining hardware tracking, improving data accuracy, and maintaining comprehensive project documentation.",
     icon: "🏢",
   },
   {
     title: "Surge IT Technology Solutions",
     role: "Software Engineer",
     description:
-      "Developed an automated reporting tool using React, saving 2 hours daily and reducing costs by 30%. Led a critical server migration, minimizing downtime by 15%. Built RESTful APIs with .NET and connected to SQL Server using Entity Framework for efficient data handling. Improved onboarding efficiency by 30% with training materials and ensured software quality with 100% issue resolution through unit testing.",
+      "Streamlined state management using React Context API for improved maintainability. Created reusable UI components with React, TypeScript, and Next.js, enhancing performance and SEO. Refined UI/UX with Figma, CSS, and Material UI for a consistent, scalable design. Optimized React bundling with Webpack and Babel for better performance.Developed a RESTful API with Node.js and Express, ensuring backend scalability. Designed efficient data models with MongoDB and Mongoose. Integrated modules into Node.js, aligning with requirements. Maintained high code quality with thorough testing and reviews.",
     icon: "🏢",
   },
   {
     title: "Accenture",
     role: "Application Development Associate",
     description:
-      "Developed an automated reporting tool using React, saving 2 hours daily and reducing costs by 30%. Led a critical server migration, minimizing downtime by 15%. Built RESTful APIs with .NET and connected to SQL Server using Entity Framework for efficient data handling. Improved onboarding efficiency by 30% with training materials and ensured software quality with 100% issue resolution through unit testing.",
+      "Developed an automated reporting tool using React, streamlining daily workflows and reducing manual effort. Led a critical server migration, ensuring minimal downtime and seamless transition. Built RESTful APIs with .NET and integrated SQL Server using Entity Framework for efficient data management. Enhanced onboarding processes by creating comprehensive training materials and ensured software quality through thorough unit testing and issue resolution.",
     icon: "🏢",
   },
 ];

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import TypewriterMotion from "../components/animation/TypewriterMotion";
 import { jobDetails } from "../components/models/workExperience.ts";
-import resume from "../assets/resume/myResume.pdf";
+// import resume from "../assets/resume/myResume.pdf";
 interface JobDetails {
   title: string;
   role: string;
@@ -22,7 +22,7 @@ const Experience = () => {
           <h1 className="text-4xl font-bold mb-12 text-center">
             <TypewriterMotion text="Professional Journey" speed={0.1} />
           </h1>
-          <div className="text-center mb-12">
+          {/* <div className="text-center mb-12">
             <a
               href={resume}
               target="_blank"
@@ -38,7 +38,7 @@ const Experience = () => {
             >
               Download My Resume
             </a>
-          </div>
+          </div> */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {jobDetails.map((job: JobDetails, index) => (
               <motion.div

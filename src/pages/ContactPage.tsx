@@ -27,7 +27,7 @@ const ContactPage = () => {
                 <p>
                   <strong>Email:</strong>
                   <br />
-                  haranhari350@gmail.com
+                  hariharnmohan@gmail.com
                 </p>
                 <p>
                   <strong>Phone:</strong>

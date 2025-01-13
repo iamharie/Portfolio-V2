@@ -10,6 +10,7 @@ import image9 from "../../assets/projectCover/Nine-Tic Tac Toe.webp";
 import image10 from "../../assets/projectCover/Ten-ToDo List.webp";
 import image11 from "../../assets/projectCover/Eleven-weatherApp.png";
 import image12 from "../../assets/projectCover/Twelve-portfolio.png";
+import resumeBuilder from "../../assets/projectCover/resumeBuilder.png";
 
 export const projectContent = `Explore my curated portfolio of projects, showcasing innovative
             solutions, modern design, and technical expertise across front-end,
@@ -29,10 +30,20 @@ const projectCover = {
   image8: image8,
   image9: image9,
   image10: image10,
+  resumeBuilder: resumeBuilder,
 };
 
 // export default projectCover;
 const projectDetails = [
+  {
+    image: projectCover.resumeBuilder,
+    name: "AI Resume Builder; Work In Progress",
+    // position: "Deployed",
+    description:
+      "Resume Builder with OpenAI API: Get a Tailored Resume Delivered to Your Inbox in One Click",
+    github: "https://github.com/iamharie/Resume-Builder",
+    url: "https://resumeprofilebuilder.netlify.app/",
+  },
   {
     image: projectCover.image1,
     name: "Etezazi Industries",

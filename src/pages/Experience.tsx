@@ -5,7 +5,7 @@ import { jobDetails } from "../components/models/workExperience.ts";
 interface JobDetails {
   title: string;
   role: string;
-  description: string;
+  description?: string;
   icon: string;
 }
 

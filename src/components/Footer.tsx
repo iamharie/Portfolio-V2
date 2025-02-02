@@ -1,5 +1,6 @@
 // import React from "react";
-import { FaLinkedin, FaGithub, FaFacebookSquare } from "react-icons/fa";
+import { FaLinkedin, FaGithub } from "react-icons/fa";
+// icon = FaFacebookSquare
 
 const Footer = () => {
   return (
@@ -35,14 +36,14 @@ const Footer = () => {
                 <span className="mt-2 text-sm">GitHub</span>
               </a>
 
-              <a
+              {/* <a
                 href=""
                 target="_blank"
                 className="flex flex-col items-center hover:text-accent transition-colors cursor-pointer"
               >
                 <FaFacebookSquare size={20} />
                 <span className="mt-2 text-sm">Facebook</span>
-              </a>
+              </a> */}
             </div>
           </div>
         </div>

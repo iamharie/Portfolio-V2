@@ -2,18 +2,24 @@
 import { motion } from "framer-motion";
 import azure from "../assets/azure.png";
 import AWS from "../assets/AWS.png";
+import google from "../assets/google.png";
 
 const Endorsed = () => {
   const endorsements = [
     {
       id: 1,
-      image: azure,
-      alt: "Azure certification logo",
+      image: AWS,
+      alt: "AWS Developer Associate certification logo",
     },
     {
       id: 2,
-      image: AWS,
-      alt: "AWS Developer Associate certification logo",
+      image: google,
+      alt: "Google AI Essentials Certification logo",
+    },
+    {
+      id: 3,
+      image: azure,
+      alt: "Azure AZ-900 certification logo",
     },
   ];
 

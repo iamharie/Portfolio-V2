@@ -11,6 +11,7 @@ import image10 from "../../assets/projectCover/Ten-ToDo List.webp";
 import image11 from "../../assets/projectCover/Eleven-weatherApp.png";
 import image12 from "../../assets/projectCover/Twelve-portfolio.png";
 import resumeBuilder from "../../assets/projectCover/resumeBuilder.png";
+import fitCoachAi from "../../assets/projectCover/fitCoachAi.png";
 
 export const projectContent = `Explore my curated portfolio of projects, showcasing innovative
             solutions, modern design, and technical expertise across front-end,
@@ -31,10 +32,20 @@ const projectCover = {
   image9: image9,
   image10: image10,
   resumeBuilder: resumeBuilder,
+  fitCoachAi: fitCoachAi,
 };
 
 // export default projectCover;
 const projectDetails = [
+  {
+    image: projectCover.fitCoachAi,
+    name: "AI Meal Planner",
+    // position: "Deployed",
+    description:
+      "A smart web application that uses AI to generate personalized meal plans based on user preferences, dietary goals, and health metrics.",
+    github: "https://github.com/iamharie/fitcoachai",
+    url: "https://fitcoachai.netlify.app/",
+  },
   {
     image: projectCover.resumeBuilder,
     name: "AI Resume Builder; Work In Progress",

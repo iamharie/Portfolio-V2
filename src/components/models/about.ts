@@ -15,7 +15,7 @@ interface AboutContent {
 const aboutContent: AboutContent = {
   passages: {
     passageOne: `I am a dedicated Integration Engineer with a passion for building seamless system connections and delivering automation-driven solutions. My academic background, including a Bachelor's and Master's degree in Computer Science, has strengthened my foundation in problem-solving, data flow management, and software integration.`,
-    passageTwo: `I specialize in working with iPaaS tools like Workato (and previously Bhoomi) to design and implement integrations across ERP, WMS, and e-commerce platforms. From transforming and mapping EDI data into XML/JSON, to ensuring accurate order flows between NetSuite and warehouse systems, I focus on creating reliable, scalable, and business-critical workflows.`,
+    passageTwo: `I specialize in working with iPaaS tools like Workato (and previously Boomi) to design and implement integrations across ERP, WMS, and e-commerce platforms. From transforming and mapping EDI data into XML/JSON, to ensuring accurate order flows between NetSuite and warehouse systems, I focus on creating reliable, scalable, and business-critical workflows.`,
     passageThree: `Beyond integrations, I enjoy exploring emerging technologies and continuously expanding my expertise. I thrive on turning complex business requirements into efficient, automated processes that reduce manual effort and improve system performance.`,
   },
   visions: {

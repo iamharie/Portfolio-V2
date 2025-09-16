@@ -15,6 +15,9 @@ const About = () => {
           <div className="space-y-6">
             <p className="text-lg mb-10">{aboutContent.passages.passageOne}</p>
             <p className="text-lg mb-10">{aboutContent.passages.passageTwo}</p>
+            <p className="text-lg mb-10">
+              {aboutContent.passages.passageThree}
+            </p>
           </div>
           <div className="bg-secondary-light dark:bg-secondary p-10 rounded-lg mt-8">
             <h3 className="text-2xl font-bold mb-4">My Vision</h3>

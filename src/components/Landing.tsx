@@ -21,7 +21,7 @@ const Landing = () => {
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-text-white dark:text-text-dark">
               <TypewriterMotion
-                text="Integration Engineer!"
+                text="Software Development Engineer!"
                 speed={0.15}
               />
             </p>

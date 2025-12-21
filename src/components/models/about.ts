@@ -14,9 +14,9 @@ interface AboutContent {
 
 const aboutContent: AboutContent = {
   passages: {
-    passageOne: `I am a dedicated Integration Engineer with a passion for building seamless system connections and delivering automation-driven solutions. My academic background, including a Bachelor's and Master's degree in Computer Science, has strengthened my foundation in problem-solving, data flow management, and software integration.`,
-    passageTwo: `I specialize in working with iPaaS tools like Workato (and previously Boomi) to design and implement integrations across ERP, WMS, and e-commerce platforms. From transforming and mapping EDI data into XML/JSON, to ensuring accurate order flows between NetSuite and warehouse systems, I focus on creating reliable, scalable, and business-critical workflows.`,
-    passageThree: `Beyond integrations, I enjoy exploring emerging technologies and continuously expanding my expertise. I thrive on turning complex business requirements into efficient, automated processes that reduce manual effort and improve system performance.`,
+    passageOne: `Highly skilled Software Development Engineer experienced in developing, implementing, customizing, integrating, supporting and of course de-bugging business applications. Proficient in SDLC, Agile, and Waterfall methodologies, with a strong focus on Java development using Servlets, JSP, JSTL, Java Beans, and JDBC. Skilled in front-end technologies, frameworks and libraries including HTML, CSS, JavaScript, TypeScript, Bootstrap, jQuery, Ajax, JSON, XML; React and React Native combined with back-end experience using frameworks like Spring Boot, Spring MVC and Hibernate. Familiar with Gradle for build automation and experienced in creating RESTful APIs with Spring MVC. Proficient in version control and collaboration tools such as Git and GitHub, as well as build management with Maven. `,
+    passageTwo: `I excel at developing scalable, secure web applications, working independently, or leading teams in dynamic, fast-paced environments. With a keen eye for market trends and a commitment to delivering high-quality solutions.`,
+    passageThree: `I am always eager to take on new challenges and grow my technical expertise. My blend of technical skills and leadership experience allows me to contribute effectively to both new development and system optimization projects.`,
   },
   visions: {
     visionOne: `I believe that learning is a continuous and dynamic journey, not a

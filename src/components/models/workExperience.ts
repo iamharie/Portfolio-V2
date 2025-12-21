@@ -1,7 +1,7 @@
 export const jobDetails = [
   {
     title: "Verizon 🇺🇸",
-    role: "Integration Engineer",
+    role: "Software Development Engineer",
     description: "Aug 2024 - Present 🟢",
     icon: "🏢",
   },
@@ -25,13 +25,13 @@ export const jobDetails = [
   },
   {
     title: "Surge Technology Solutions 🇮🇳",
-    role: "Integration Engineer",
+    role: "Software Engineer",
     description: "Mar 2021 - Jun 2022",
     icon: "🏢",
   },
   {
     title: "Accenture 🇮🇳",
-    role: "Integration Engineer",
+    role: "Software Engineer",
     description: "Apr 2019 - Mar 2021",
     icon: "🏢",
   },

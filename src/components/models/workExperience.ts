@@ -7,8 +7,8 @@ export const jobDetails = [
   },
   {
     title: "Porter Lee Corporation 🇺🇸",
-    role: "Software Developer Internship",
-    description: "May 2024 - Aug 2024",
+    role: "Software Engineer",
+    description: "Jan 2024 - Jul 2024",
     icon: "🏢",
   },
   {
@@ -25,14 +25,14 @@ export const jobDetails = [
   },
   {
     title: "Surge Technology Solutions 🇮🇳",
-    role: "Software Engineer",
+    role: "Software Engineer - Seasonal",
     description: "Mar 2021 - Jun 2022",
     icon: "🏢",
   },
   {
     title: "Accenture 🇮🇳",
-    role: "Software Engineer",
-    description: "Apr 2019 - Mar 2021",
+    role: "Full Stack Engineer",
+    description: "Apr 2019 - Mar 2022",
     icon: "🏢",
   },
 ];

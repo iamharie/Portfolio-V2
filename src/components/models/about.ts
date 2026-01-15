@@ -5,6 +5,7 @@ interface AboutContent {
     passageOne: string;
     passageTwo: string;
     passageThree: string;
+    passageFour: string;
   };
   visions: {
     visionOne: string;
@@ -14,20 +15,14 @@ interface AboutContent {
 
 const aboutContent: AboutContent = {
   passages: {
-    passageOne: `Highly skilled Software Development Engineer experienced in developing, implementing, customizing, integrating, supporting and of course de-bugging business applications. Proficient in SDLC, Agile, and Waterfall methodologies, with a strong focus on Java development using Servlets, JSP, JSTL, Java Beans, and JDBC. Skilled in front-end technologies, frameworks and libraries including HTML, CSS, JavaScript, TypeScript, Bootstrap, jQuery, Ajax, JSON, XML; React and React Native combined with back-end experience using frameworks like Spring Boot, Spring MVC and Hibernate. Familiar with Gradle for build automation and experienced in creating RESTful APIs with Spring MVC. Proficient in version control and collaboration tools such as Git and GitHub, as well as build management with Maven. `,
-    passageTwo: `I excel at developing scalable, secure web applications, working independently, or leading teams in dynamic, fast-paced environments. With a keen eye for market trends and a commitment to delivering high-quality solutions.`,
-    passageThree: `I am always eager to take on new challenges and grow my technical expertise. My blend of technical skills and leadership experience allows me to contribute effectively to both new development and system optimization projects.`,
+    passageOne: `I am a Software Engineer with strong experience building scalable, secure, and high-performance web applications across the full stack. I specialize in translating complex business requirements into clean, maintainable, and production-ready solutions.`,
+    passageTwo: `My expertise spans modern frontend development with React and TypeScript, paired with robust backend systems built using Java, Spring Boot, and RESTful APIs. I have hands-on experience designing APIs, integrating services, and optimizing application performance to support real-world scale and reliability.`,
+    passageThree: `I work comfortably across the entire development lifecycle, from architecture and implementation to testing, deployment, and maintenance, while collaborating in Agile, fast-paced environments. Whether working independently or leading initiatives within a team, I focus on code quality, system scalability, and long-term maintainability.`,
+    passageFour: `I am driven by continuous learning and enjoy tackling challenging problems that push both my technical depth and system-level thinking. My goal is to build software that not only works, but scales, performs, and delivers lasting value.`,
   },
   visions: {
-    visionOne: `I believe that learning is a continuous and dynamic journey, not a
-              linear process. My vision is to work with like-minded individuals
-              who share a passion for innovation and growth, fostering
-              collaboration that drives excellence.`,
-    visionTwo: `I aspire to contribute to meaningful projects that add
-              tangible value to businesses while providing opportunities for
-              personal and professional development. By embracing challenges and
-              leveraging my skills, I aim to create impactful solutions that
-              make a difference in the ever-evolving world of technology.`,
+    visionOne: `I believe learning is a continuous and evolving journey. My vision is to collaborate with like-minded individuals who are driven by innovation, growth, and excellence, and to contribute within environments that value thoughtful problem-solving and collaboration.`,
+    visionTwo: `I aspire to work on meaningful projects that deliver real business impact while fostering personal and professional growth. By embracing challenges and applying my skills with intent, I aim to build solutions that are scalable, impactful, and relevant in an ever-evolving technology landscape.`,
   },
 };
 

@@ -52,7 +52,7 @@ const Footer = () => {
             &copy; {new Date().getFullYear()} Hariharan Mohan. All rights
             reserved.
           </p>
-          <p>Developed with ❤️ by Hari</p>
+          {/* <p>Developed with ❤️ by Hari</p> */}
         </div>
       </div>
     </footer>

@@ -17,13 +17,13 @@ const Landing = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 text-text-white dark:text-text-dark ">
-              <TypewriterMotion text="Hi I am Hari" speed={0.1} />
+              <TypewriterMotion
+                text="Engineering Solutions That Scale"
+                speed={0.1}
+              />
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-text-white dark:text-text-dark">
-              <TypewriterMotion
-                text="Software Development Engineer!"
-                speed={0.15}
-              />
+              <TypewriterMotion text="Software Engineer" speed={0.1} />
             </p>
             <motion.button
               onClick={handleNavigate}
@@ -34,7 +34,7 @@ const Landing = () => {
               whileHover={{ scale: 1.1, backgroundColor: "bg-opacity-90" }}
               whileTap={{ scale: 0.95 }}
             >
-              Learn More
+              View My Experience
             </motion.button>
             {/* <button
               onClick={handleNavigate}

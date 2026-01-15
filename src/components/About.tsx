@@ -12,17 +12,16 @@ const About = () => {
           className="max-w-4xl mx-auto text-text-light dark:text-text-dark"
         >
           <h2 className="text-4xl font-bold mb-8 text-center">About Me</h2>
-          <div className="space-y-6">
-            <p className="text-lg mb-10">{aboutContent.passages.passageOne}</p>
-            <p className="text-lg mb-10">{aboutContent.passages.passageTwo}</p>
-            <p className="text-lg mb-10">
-              {aboutContent.passages.passageThree}
-            </p>
-          </div>
+          {/* <div className="space-y-6"> */}
+          <p className="text-lg mb-8">{aboutContent.passages.passageOne}</p>
+          <p className="text-lg mb-8">{aboutContent.passages.passageTwo}</p>
+          <p className="text-lg mb-8">{aboutContent.passages.passageThree}</p>
+          <p className="text-lg mb-8">{aboutContent.passages.passageFour}</p>
+          {/* </div> */}
           <div className="bg-secondary-light dark:bg-secondary p-10 rounded-lg mt-8">
             <h3 className="text-2xl font-bold mb-4">My Vision</h3>
-            <p className="mb-10">{aboutContent.visions.visionOne}</p>
-            <p className="mb-10">{aboutContent.visions.visionTwo}</p>
+            <p className="mb-8">{aboutContent.visions.visionOne}</p>
+            <p className="mb-8">{aboutContent.visions.visionTwo}</p>
           </div>
         </motion.div>
       </div>

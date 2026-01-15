@@ -19,20 +19,20 @@ export const jobDetails = [
   },
   {
     title: "Wichita State University 🇺🇸",
-    role: "Student Admin",
+    role: "Student Technician",
     description: "Jan 2023 - May 2023",
     icon: "👨🏻‍🎓",
   },
   {
     title: "Surge Technology Solutions 🇮🇳",
-    role: "Software Engineer - Seasonal",
+    role: "Software Engineer",
     description: "Mar 2021 - Jun 2022",
     icon: "🏢",
   },
   {
     title: "Accenture 🇮🇳",
     role: "Full Stack Engineer",
-    description: "Apr 2019 - Mar 2022",
+    description: "Apr 2019 - Mar 2021",
     icon: "🏢",
   },
 ];

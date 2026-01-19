@@ -1,4 +1,5 @@
 // import React from "react";
+import { Link } from "react-router-dom";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 // icon = FaFacebookSquare
 
@@ -9,7 +10,12 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <h3 className="text-xl font-bold mb-4">Hariharan Mohan</h3>
-            <p>Dedication has no limitation! </p>
+            <Link
+              to="/test"
+              className="text-accent hover:underline transition-colors cursor-pointer font-semibold"
+            >
+              TEST
+            </Link>
           </div>
           <div>
             <h3 className="text-xl font-bold mb-4">Contact</h3>
@@ -22,6 +28,7 @@ const Footer = () => {
               <a
                 href="https://www.linkedin.com/in/hariee/"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="flex flex-col items-center hover:text-accent transition-colors cursor-pointer"
               >
                 <FaLinkedin size={20} />
@@ -30,6 +37,7 @@ const Footer = () => {
               <a
                 href="https://github.com/iamharie"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="flex flex-col items-center hover:text-accent transition-colors cursor-pointer"
               >
                 <FaGithub size={20} />

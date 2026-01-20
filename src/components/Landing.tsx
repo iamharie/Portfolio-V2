@@ -1,7 +1,7 @@
 // import React from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { IconCloudDemo } from "./test-versions/IconCloudDemo";
+import { IconCloudDemo } from "./landingpage-icons/IconCloudDemo";
 import TypewriterMotion from "./animation/TypewriterMotion";
 
 const Landing = () => {

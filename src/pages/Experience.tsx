@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import TypewriterMotion from "../components/animation/TypewriterMotion";
 import { jobDetails } from "../components/models/workExperience.ts";
-import { education } from "../components/models/education.tsx";
+import { education } from "../components/models/education.ts";
 // import resume from "../assets/resume/myResume.pdf";
 interface JobDetails {
   title: string;

@@ -11,10 +11,10 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-bold mb-4">Hariharan Mohan</h3>
             <Link
-              to="/test"
+              to="/sslogin"
               className="text-accent hover:underline transition-colors cursor-pointer font-semibold"
             >
-              TEST
+              StayStrong
             </Link>
           </div>
           <div>

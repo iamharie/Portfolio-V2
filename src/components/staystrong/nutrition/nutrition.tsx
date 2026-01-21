@@ -295,16 +295,16 @@ const Nutrition: React.FC = () => {
               <label className="block text-sm font-medium mb-2 text-text-light dark:text-text-dark">
                 Height
               </label>
-              <div className="flex gap-2 mb-2">
+              <div className="flex gap-2 mb-3">
                 <button
                   type="button"
                   onClick={() =>
                     setFormData({
                       ...formData,
-                      height: { ...formData.height, unit: "cm" },
+                      height: { value: "", unit: "cm", feet: "", inches: "" },
                     })
                   }
-                  className={`px-4 py-2 rounded-lg ${formData.height.unit === "cm" ? "bg-accent text-white" : "bg-secondary-light dark:bg-secondary text-text-light dark:text-text-dark"}`}
+                  className={`px-6 py-2 rounded-lg font-medium transition-all ${formData.height.unit === "cm" ? "bg-accent text-white" : "bg-secondary-light dark:bg-secondary text-text-light dark:text-text-dark hover:bg-accent/20"}`}
                 >
                   cm
                 </button>
@@ -313,10 +313,10 @@ const Nutrition: React.FC = () => {
                   onClick={() =>
                     setFormData({
                       ...formData,
-                      height: { ...formData.height, unit: "ft" },
+                      height: { value: "", unit: "ft", feet: "", inches: "" },
                     })
                   }
-                  className={`px-4 py-2 rounded-lg ${formData.height.unit === "ft" ? "bg-accent text-white" : "bg-secondary-light dark:bg-secondary text-text-light dark:text-text-dark"}`}
+                  className={`px-6 py-2 rounded-lg font-medium transition-all ${formData.height.unit === "ft" ? "bg-accent text-white" : "bg-secondary-light dark:bg-secondary text-text-light dark:text-text-dark hover:bg-accent/20"}`}
                 >
                   ft
                 </button>
@@ -336,37 +336,44 @@ const Nutrition: React.FC = () => {
                   className="w-full px-4 py-3 rounded-lg border border-secondary dark:border-secondary-light bg-white dark:bg-gray-800 text-text-light dark:text-text-dark focus:outline-none focus:ring-2 focus:ring-accent"
                 />
               ) : (
-                <div className="flex gap-2">
-                  <input
-                    type="number"
-                    value={formData.height.feet || ""}
-                    onChange={(e) =>
-                      setFormData({
-                        ...formData,
-                        height: { ...formData.height, feet: e.target.value },
-                      })
-                    }
-                    placeholder="5"
-                    className="flex-1 px-4 py-3 rounded-lg border border-secondary dark:border-secondary-light bg-white dark:bg-gray-800 text-text-light dark:text-text-dark focus:outline-none focus:ring-2 focus:ring-accent"
-                  />
-                  <span className="flex items-center text-text-light dark:text-text-dark">
-                    ft
-                  </span>
-                  <input
-                    type="number"
-                    value={formData.height.inches || ""}
-                    onChange={(e) =>
-                      setFormData({
-                        ...formData,
-                        height: { ...formData.height, inches: e.target.value },
-                      })
-                    }
-                    placeholder="10"
-                    className="flex-1 px-4 py-3 rounded-lg border border-secondary dark:border-secondary-light bg-white dark:bg-gray-800 text-text-light dark:text-text-dark focus:outline-none focus:ring-2 focus:ring-accent"
-                  />
-                  <span className="flex items-center text-text-light dark:text-text-dark">
-                    in
-                  </span>
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="relative">
+                    <input
+                      type="number"
+                      value={formData.height.feet || ""}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          height: { ...formData.height, feet: e.target.value },
+                        })
+                      }
+                      placeholder="5"
+                      className="w-full px-4 py-3 pr-12 rounded-lg border border-secondary dark:border-secondary-light bg-white dark:bg-gray-800 text-text-light dark:text-text-dark focus:outline-none focus:ring-2 focus:ring-accent"
+                    />
+                    <span className="absolute right-4 top-1/2 -translate-y-1/2 text-text-light dark:text-text-dark font-medium">
+                      ft
+                    </span>
+                  </div>
+                  <div className="relative">
+                    <input
+                      type="number"
+                      value={formData.height.inches || ""}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          height: {
+                            ...formData.height,
+                            inches: e.target.value,
+                          },
+                        })
+                      }
+                      placeholder="10"
+                      className="w-full px-4 py-3 pr-12 rounded-lg border border-secondary dark:border-secondary-light bg-white dark:bg-gray-800 text-text-light dark:text-text-dark focus:outline-none focus:ring-2 focus:ring-accent"
+                    />
+                    <span className="absolute right-4 top-1/2 -translate-y-1/2 text-text-light dark:text-text-dark font-medium">
+                      in
+                    </span>
+                  </div>
                 </div>
               )}
             </div>

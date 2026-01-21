@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import aboutContent from "./models/about";
+import Recommendations from "./Recommendations";
 
 const About = () => {
   return (
@@ -18,6 +19,9 @@ const About = () => {
           <p className="text-lg mb-8">{aboutContent.passages.passageThree}</p>
           <p className="text-lg mb-8">{aboutContent.passages.passageFour}</p>
           {/* </div> */}
+
+          <Recommendations />
+
           <div className="bg-secondary-light dark:bg-secondary p-10 rounded-lg mt-8">
             <h3 className="text-2xl font-bold mb-4">My Vision</h3>
             <p className="mb-8">{aboutContent.visions.visionOne}</p>

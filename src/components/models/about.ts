@@ -16,7 +16,7 @@ interface AboutContent {
 const aboutContent: AboutContent = {
   passages: {
     passageOne: `I am a Software Engineer with strong experience building scalable, secure, and high-performance web applications across the full stack. I specialize in translating complex business requirements into clean, maintainable, and production-ready solutions.`,
-    passageTwo: `My expertise spans modern frontend development with React and TypeScript, paired with robust backend systems built using Java, Spring Boot, and RESTful APIs. I have hands-on experience designing APIs, integrating services, and optimizing application performance to support real-world scale and reliability.`,
+    passageTwo: `My expertise spans modern frontend development with React and TypeScript, paired with robust backend systems built using Java, Spring Boot, Node.js, Express, and GraphQL. I have hands-on experience designing scalable RESTful and GraphQL APIs, integrating services, and optimizing application performance to support real-world scale and reliability.`,
     passageThree: `I work comfortably across the entire development lifecycle, from architecture and implementation to testing, deployment, and maintenance, while collaborating in Agile, fast-paced environments. Whether working independently or leading initiatives within a team, I focus on code quality, system scalability, and long-term maintainability.`,
     passageFour: `I am driven by continuous learning and enjoy tackling challenging problems that push both my technical depth and system-level thinking. My goal is to build software that not only works, but scales, performs, and delivers lasting value.`,
   },

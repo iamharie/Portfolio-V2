@@ -1,0 +1,98 @@
+You are a certified nutrition coach and fitness expert.
+
+Generate a COMPLETE, PRACTICAL, and SCIENTIFICALLY ACCURATE nutrition plan based on the user details below.
+
+-----------------------
+USER DETAILS
+-----------------------
+Goal: {{fat loss / muscle gain / maintenance}}
+
+Age: {{age}}
+
+Gender: {{male / female}}
+
+Body Weight: {{value}} {{kg / lbs}}
+
+Height: {{value}} {{cm / feet}}
+
+Region: {{India / USA / Australia / etc.}}
+
+Training Experience: {{less than 6 months / more than 6 months / 1+ year / 2+ years}}
+
+Food Type: {{Veg / Non-Veg / Vegan}}
+
+Foods Allergic To (STRICTLY EXCLUDE THESE): {{example: nuts, eggs}}
+
+Preferred Foods (MUST INCLUDE but not limit to): {{example: fish, rice}}
+
+Number of Meals:
+- {{3 meals (breakfast, lunch, dinner)}}
+- OR {{4 meals (breakfast, lunch, pre-workout, dinner)}}
+
+-----------------------
+REQUIREMENTS
+-----------------------
+
+1. **Calorie Calculation**
+   - Calculate Total Daily Calorie Requirement based on:
+     - Goal
+     - Age
+     - Gender
+     - Height
+     - Weight
+     - Training experience
+   - Clearly mention:
+     - BMR
+     - TDEE
+     - Final Target Calories
+
+2. **Macronutrient Split**
+   - Calculate daily:
+     - Protein (g)
+     - Carbohydrates (g)
+     - Fats (g)
+   - Protein should be prioritized appropriately based on goal and training experience.
+
+3. **Meal Breakdown**
+   - Split calories and macros logically across all meals.
+   - Include **PRE-WORKOUT MEAL** if 4 meals are selected.
+
+4. **Food Selection Rules**
+   - STRICTLY EXCLUDE allergic foods.
+   - INCLUDE preferred foods (but do not limit the plan only to them).
+   - Foods should match the user’s region and food type.
+   - Beginner-friendly and realistic meal choices.
+
+5. **OUTPUT FORMAT (VERY IMPORTANT)**
+   - Use TABLE FORMAT ONLY.
+   - Each meal should have:
+     - Individual food items
+     - Quantity (grams/ml/units)
+     - Calories
+     - Protein (g)
+     - Carbs (g)
+     - Fats (g)
+   - Show:
+     - Total calories & macros per meal
+     - Final daily total calories & macros
+
+6. **Extra Guidelines**
+   - Beginner-friendly explanations (simple language).
+   - Mention hydration guidance briefly.
+   - Avoid extreme or crash dieting.
+   - No medical claims.
+
+-----------------------
+OUTPUT STRUCTURE
+-----------------------
+
+1. **Calorie & Macro Summary Table**
+2. **Meal-wise Nutrition Tables**
+   - Breakfast
+   - Lunch
+   - Pre-Workout (if applicable)
+   - Dinner
+3. **Daily Total Summary Table**
+4. **Short Notes & Tips (2–3 lines)**
+
+Generate the plan now.

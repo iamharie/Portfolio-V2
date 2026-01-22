@@ -114,15 +114,6 @@ const Recommendations = () => {
                   <div className="flex flex-col md:flex-row gap-8">
                     {/* Left: Photo and Info */}
                     <div className="flex flex-col items-center md:items-start md:w-1/3">
-                      {/* <motion.img
-                        whileHover={{ scale: 1.05 }}
-                        src={currentRec.photo}
-                        alt={currentRec.name}
-                        className="w-32 h-32 rounded-full object-cover mb-4 border-4 border-accent shadow-lg"
-                      />
-                      <h3 className="text-2xl font-bold text-accent mb-1 text-center md:text-left">
-                        {currentRec.name}
-                      </h3> */}
                       <div className="relative w-32 h-32 mb-4">
                         {imageLoading && !imageError && (
                           <div className="absolute inset-0 rounded-full border-4 border-accent bg-secondary-light dark:bg-secondary flex items-center justify-center">

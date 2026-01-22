@@ -7,9 +7,16 @@ import {
   FaTimes,
   FaCopy,
   FaCheckCircle,
+  FaCalendarCheck,
+  FaCalendarAlt,
+  FaCalendar,
 } from "react-icons/fa";
 import { generateNutritionPrompt } from "../../../utils/nutritionPrompt";
 
+interface Supplement {
+  name: string;
+  brand?: string;
+}
 interface FormData {
   goal: string;
   gender: string;
@@ -22,6 +29,11 @@ interface FormData {
   allergies: string[];
   preferredFoods: string[];
   mealsPerDay: string;
+  mealVariety: string;
+  supplements: {
+    common: string[];
+    custom: Supplement[];
+  };
 }
 
 const Nutrition: React.FC = () => {
@@ -38,16 +50,24 @@ const Nutrition: React.FC = () => {
     allergies: [],
     preferredFoods: [],
     mealsPerDay: "",
+    mealVariety: "",
+    supplements: {
+      common: [],
+      custom: [],
+    },
   });
 
+  const [customRegionInput, setCustomRegionInput] = useState("");
   const [allergyInput, setAllergyInput] = useState("");
   const [preferredFoodInput, setPreferredFoodInput] = useState("");
+  const [supplementNameInput, setSupplementNameInput] = useState("");
+  const [supplementBrandInput, setSupplementBrandInput] = useState("");
   const [showToast, setShowToast] = useState(false);
   const [showPrompt, setShowPrompt] = useState(false);
   const [generatedPrompt, setGeneratedPrompt] = useState("");
   const [copied, setCopied] = useState(false);
 
-  const totalSteps = 9;
+  const totalSteps = 11;
 
   // Validation function for each step
   const isStepValid = (step: number): boolean => {
@@ -72,6 +92,10 @@ const Nutrition: React.FC = () => {
           );
         }
       case 4:
+        // Validate that if "Other" is selected, custom input is provided
+        if (formData.region === "Other") {
+          return customRegionInput.trim() !== "";
+        }
         return formData.region !== "";
       case 5:
         return formData.trainingExperience !== "";
@@ -83,6 +107,10 @@ const Nutrition: React.FC = () => {
         return true; // Preferred foods are optional
       case 9:
         return formData.mealsPerDay !== "";
+      case 10:
+        return formData.mealVariety !== "";
+      case 11:
+        return true; // Supplements are optional
       default:
         return false;
     }
@@ -115,6 +143,69 @@ const Nutrition: React.FC = () => {
     setFormData({
       ...formData,
       [type]: formData[type].filter((i) => i !== item),
+    });
+  };
+
+  // Add these functions after the removeChip function:
+
+  const toggleCommonSupplement = (supplement: string) => {
+    const currentCommon = formData.supplements.common;
+    if (currentCommon.includes(supplement)) {
+      setFormData({
+        ...formData,
+        supplements: {
+          ...formData.supplements,
+          common: currentCommon.filter((s) => s !== supplement),
+        },
+      });
+    } else {
+      setFormData({
+        ...formData,
+        supplements: {
+          ...formData.supplements,
+          common: [...currentCommon, supplement],
+        },
+      });
+    }
+  };
+
+  const addCustomSupplement = () => {
+    if (supplementNameInput.trim() === "") return;
+
+    const newSupplement: Supplement = {
+      name: supplementNameInput.trim(),
+      brand: supplementBrandInput.trim() || undefined,
+    };
+
+    // Check for duplicates
+    const isDuplicate = formData.supplements.custom.some(
+      (s) =>
+        s.name.toLowerCase() === newSupplement.name.toLowerCase() &&
+        s.brand?.toLowerCase() === newSupplement.brand?.toLowerCase(),
+    );
+
+    if (isDuplicate) return;
+
+    setFormData({
+      ...formData,
+      supplements: {
+        ...formData.supplements,
+        custom: [...formData.supplements.custom, newSupplement],
+      },
+    });
+
+    // Clear inputs
+    setSupplementNameInput("");
+    setSupplementBrandInput("");
+  };
+
+  const removeCustomSupplement = (index: number) => {
+    setFormData({
+      ...formData,
+      supplements: {
+        ...formData.supplements,
+        custom: formData.supplements.custom.filter((_, i) => i !== index),
+      },
     });
   };
 
@@ -387,18 +478,80 @@ const Nutrition: React.FC = () => {
             <p className="text-text-light dark:text-text-dark mb-4">
               Select your location
             </p>
-            <select
-              value={formData.region}
-              onChange={(e) =>
-                setFormData({ ...formData, region: e.target.value })
-              }
-              className="w-full px-4 py-3 rounded-lg border border-secondary dark:border-secondary-light bg-white dark:bg-gray-800 text-text-light dark:text-text-dark focus:outline-none focus:ring-2 focus:ring-accent"
-            >
-              <option value="">Select Region</option>
-              <option value="India">India</option>
-              <option value="USA">USA</option>
-              <option value="Australia">Australia</option>
-            </select>
+
+            <div className="space-y-3">
+              {["India", "USA", "Australia"].map((region) => (
+                <button
+                  key={region}
+                  type="button"
+                  onClick={() => {
+                    setFormData({ ...formData, region });
+                    setCustomRegionInput(""); // Clear custom input when selecting predefined
+                  }}
+                  className={`w-full p-4 rounded-lg border-2 text-left transition-all ${
+                    formData.region === region
+                      ? "border-accent bg-accent/10 shadow-lg"
+                      : "border-secondary dark:border-secondary-light hover:border-accent/50"
+                  }`}
+                >
+                  <span className="font-semibold text-text-light dark:text-text-dark">
+                    {region}
+                  </span>
+                </button>
+              ))}
+
+              {/* Other Option */}
+              <button
+                type="button"
+                onClick={() => {
+                  setFormData({ ...formData, region: "Other" });
+                  setCustomRegionInput(""); // Clear input when clicking Other
+                }}
+                className={`w-full p-4 rounded-lg border-2 text-left transition-all ${
+                  formData.region === "Other" ||
+                  !["India", "USA", "Australia"].includes(formData.region)
+                    ? "border-accent bg-accent/10 shadow-lg"
+                    : "border-secondary dark:border-secondary-light hover:border-accent/50"
+                }`}
+              >
+                <span className="font-semibold text-text-light dark:text-text-dark">
+                  Other
+                  {customRegionInput && ` (${customRegionInput})`}
+                </span>
+              </button>
+
+              {/* Conditional Input for Other */}
+              {(formData.region === "Other" ||
+                !["India", "USA", "Australia"].includes(formData.region)) && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="mt-4"
+                >
+                  <label className="block text-sm font-medium mb-2 text-text-light dark:text-text-dark">
+                    Enter Your Country <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    value={customRegionInput}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      setCustomRegionInput(value);
+                      // Update formData.region with the actual input or keep "Other" if empty
+                      setFormData({
+                        ...formData,
+                        region: value.trim() || "Other",
+                      });
+                    }}
+                    placeholder="e.g. Canada"
+                    autoFocus
+                    className="w-full px-4 py-3 rounded-lg border border-secondary dark:border-secondary-light bg-white dark:bg-gray-800 text-text-light dark:text-text-dark focus:outline-none focus:ring-2 focus:ring-accent"
+                  />
+                </motion.div>
+              )}
+            </div>
           </div>
         );
 
@@ -619,6 +772,248 @@ const Nutrition: React.FC = () => {
             </div>
           </div>
         );
+      case 10:
+        return (
+          <div className="space-y-6">
+            <h2 className="text-3xl font-bold text-accent mb-2">
+              Meal Variety Preference
+            </h2>
+            <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-accent mb-6">
+              <p className="text-text-light dark:text-text-dark">
+                <strong>Important:</strong> Eating the same meals every day can
+                get boring. Choose how much variety you want - we'll handle the
+                rest.
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              {/* Standard Option */}
+              <button
+                type="button"
+                onClick={() =>
+                  setFormData({ ...formData, mealVariety: "standard" })
+                }
+                className={`w-full p-6 rounded-xl border-2 text-left transition-all ${
+                  formData.mealVariety === "standard"
+                    ? "border-green-500 bg-green-500/10 shadow-lg"
+                    : "border-secondary dark:border-secondary-light hover:border-green-500/50"
+                }`}
+              >
+                <div className="flex items-start gap-4">
+                  <FaCalendarCheck className="text-3xl text-green-500 flex-shrink-0 mt-1" />
+                  <div className="flex-1">
+                    <div className="text-xl font-semibold text-text-light dark:text-text-dark mb-2">
+                      Standard (Same meals daily)
+                    </div>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                      Simple & easy to follow
+                    </p>
+                  </div>
+                </div>
+              </button>
+
+              {/* 3-Day Rotation */}
+              <button
+                type="button"
+                onClick={() =>
+                  setFormData({ ...formData, mealVariety: "3-day-rotation" })
+                }
+                className={`w-full p-6 rounded-xl border-2 text-left transition-all ${
+                  formData.mealVariety === "3-day-rotation"
+                    ? "border-yellow-500 bg-yellow-500/10 shadow-lg"
+                    : "border-secondary dark:border-secondary-light hover:border-yellow-500/50"
+                }`}
+              >
+                <div className="flex items-start gap-4">
+                  <FaCalendarAlt className="text-3xl text-yellow-500 flex-shrink-0 mt-1" />
+                  <div className="flex-1">
+                    <div className="text-xl font-semibold text-text-light dark:text-text-dark mb-2">
+                      3-Day Rotation
+                    </div>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                      3 different meals rotated across 3 days
+                    </p>
+                  </div>
+                </div>
+              </button>
+
+              {/* 5-Day Rotation */}
+              <button
+                type="button"
+                onClick={() =>
+                  setFormData({ ...formData, mealVariety: "5-day-rotation" })
+                }
+                className={`w-full p-6 rounded-xl border-2 text-left transition-all ${
+                  formData.mealVariety === "5-day-rotation"
+                    ? "border-blue-500 bg-blue-500/10 shadow-lg"
+                    : "border-secondary dark:border-secondary-light hover:border-blue-500/50"
+                }`}
+              >
+                <div className="flex items-start gap-4">
+                  <FaCalendar className="text-3xl text-blue-500 flex-shrink-0 mt-1" />
+                  <div className="flex-1">
+                    <div className="text-xl font-semibold text-text-light dark:text-text-dark mb-2">
+                      5-Day Rotation
+                    </div>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                      5 different meals rotated across 5 days
+                    </p>
+                  </div>
+                </div>
+              </button>
+            </div>
+          </div>
+        );
+      // Add this after case 10:
+
+      case 11:
+        const commonSupplements = [
+          "Whey Protein Isolate",
+          "Creatine Monohydrate",
+        ];
+
+        return (
+          <div className="space-y-6">
+            <h2 className="text-3xl font-bold text-accent mb-2">
+              Supplements (Optional)
+            </h2>
+            <div className="bg-cyan-50 dark:bg-cyan-900/20 p-4 rounded-lg border-l-4 border-cyan-500 mb-6">
+              <p className="text-text-light dark:text-text-dark">
+                <strong>Note:</strong> Supplements are optional. If you use any,
+                add them below - we'll account for them in your plan.
+              </p>
+            </div>
+
+            {/* Commonly Used Supplements */}
+            <div className="mb-6">
+              <h3 className="text-lg font-semibold text-text-light dark:text-text-dark mb-3">
+                Commonly Used Supplements
+              </h3>
+              <p className="text-sm text-gray-500 mb-4">
+                Click to select the supplements you use
+              </p>
+              <div className="flex flex-wrap gap-3">
+                {commonSupplements.map((supplement) => (
+                  <motion.button
+                    key={supplement}
+                    type="button"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => toggleCommonSupplement(supplement)}
+                    className={`px-4 py-3 rounded-full font-medium transition-all ${
+                      formData.supplements.common.includes(supplement)
+                        ? "bg-cyan-500 text-white shadow-lg"
+                        : "bg-secondary-light dark:bg-secondary text-text-light dark:text-text-dark border-2 border-secondary dark:border-secondary-light hover:border-cyan-500"
+                    }`}
+                  >
+                    {supplement}
+                  </motion.button>
+                ))}
+              </div>
+            </div>
+
+            {/* Other Supplements */}
+            <div>
+              <h3 className="text-lg font-semibold text-text-light dark:text-text-dark mb-3">
+                Other Supplements
+              </h3>
+              <p className="text-sm text-gray-500 mb-4">
+                Add any other supplements you're currently using
+              </p>
+
+              <div className="space-y-3 mb-4">
+                <div>
+                  <label className="block text-sm font-medium mb-2 text-text-light dark:text-text-dark">
+                    Supplement Name <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    value={supplementNameInput}
+                    onChange={(e) => setSupplementNameInput(e.target.value)}
+                    onKeyPress={(e) =>
+                      e.key === "Enter" &&
+                      (e.preventDefault(), addCustomSupplement())
+                    }
+                    placeholder="e.g. Omega 3"
+                    className="w-full px-4 py-3 rounded-lg border border-secondary dark:border-secondary-light bg-white dark:bg-gray-800 text-text-light dark:text-text-dark focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium mb-2 text-text-light dark:text-text-dark">
+                    Brand (Optional)
+                  </label>
+                  <input
+                    type="text"
+                    value={supplementBrandInput}
+                    onChange={(e) => setSupplementBrandInput(e.target.value)}
+                    onKeyPress={(e) =>
+                      e.key === "Enter" &&
+                      (e.preventDefault(), addCustomSupplement())
+                    }
+                    placeholder="e.g. Nordic Naturals"
+                    className="w-full px-4 py-3 rounded-lg border border-secondary dark:border-secondary-light bg-white dark:bg-gray-800 text-text-light dark:text-text-dark focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                  />
+                </div>
+
+                <button
+                  type="button"
+                  onClick={addCustomSupplement}
+                  disabled={supplementNameInput.trim() === ""}
+                  className="w-full px-6 py-3 bg-cyan-500 text-white rounded-lg hover:bg-cyan-600 transition-colors font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  + Add Supplement
+                </button>
+              </div>
+
+              {/* Display Custom Supplements */}
+              {formData.supplements.custom.length > 0 && (
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {formData.supplements.custom.map((supplement, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      exit={{ scale: 0 }}
+                      className="flex items-center gap-2 px-4 py-2 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 rounded-full"
+                    >
+                      <span>
+                        {supplement.name}
+                        {supplement.brand && ` · ${supplement.brand}`}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => removeCustomSupplement(index)}
+                        className="hover:text-cyan-900 dark:hover:text-cyan-100"
+                      >
+                        <FaTimes />
+                      </button>
+                    </motion.div>
+                  ))}
+                </div>
+              )}
+
+              {/* Display Selected Common Supplements */}
+              {formData.supplements.common.length > 0 && (
+                <div className="mt-6 p-4 bg-cyan-50 dark:bg-cyan-900/10 rounded-lg">
+                  <h4 className="text-sm font-semibold text-text-light dark:text-text-dark mb-2">
+                    Selected Common Supplements:
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {formData.supplements.common.map((supplement) => (
+                      <span
+                        key={supplement}
+                        className="px-3 py-1 bg-cyan-500 text-white rounded-full text-sm"
+                      >
+                        {supplement}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        );
 
       default:
         return null;
@@ -753,7 +1148,15 @@ const Nutrition: React.FC = () => {
                     allergies: [],
                     preferredFoods: [],
                     mealsPerDay: "",
+                    mealVariety: "",
+                    supplements: {
+                      common: [],
+                      custom: [],
+                    },
                   });
+                  setSupplementNameInput("");
+                  setSupplementBrandInput("");
+                  setCustomRegionInput("");
                 }}
                 className="text-accent hover:text-blue-600 font-semibold underline"
               >

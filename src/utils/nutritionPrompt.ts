@@ -1,3 +1,7 @@
+interface Supplement {
+  name: string;
+  brand?: string;
+}
 interface FormData {
   goal: string;
   gender: string;
@@ -10,6 +14,11 @@ interface FormData {
   allergies: string[];
   preferredFoods: string[];
   mealsPerDay: string;
+  mealVariety: string;
+  supplements: {
+    common: string[];
+    custom: Supplement[];
+  };
 }
 
 export const generateNutritionPrompt = (formData: FormData): string => {
@@ -22,6 +31,26 @@ export const generateNutritionPrompt = (formData: FormData): string => {
     formData.mealsPerDay === "3"
       ? "3 meals (breakfast, lunch, dinner)"
       : "4 meals (breakfast, lunch, pre-workout, dinner)";
+
+  const varietyDescription =
+    formData.mealVariety === "standard"
+      ? "Same meals every day (Standard)"
+      : formData.mealVariety === "3-day-rotation"
+        ? "3-day meal rotation (different meals for 3 days, then repeat)"
+        : "5-day meal rotation (different meals for 5 days, then repeat)";
+
+  const supplementsList = [];
+  if (formData.supplements.common.length > 0) {
+    supplementsList.push(...formData.supplements.common);
+  }
+  if (formData.supplements.custom.length > 0) {
+    formData.supplements.custom.forEach((s) => {
+      supplementsList.push(s.brand ? `${s.name} (${s.brand})` : s.name);
+    });
+  }
+
+  const supplementsText =
+    supplementsList.length > 0 ? supplementsList.join(", ") : "None";
 
   return `You are a certified nutrition coach and fitness expert.
 
@@ -58,6 +87,10 @@ Preferred Foods (MUST INCLUDE but not limit to): ${
 
 Number of Meals: ${mealsDescription}
 
+Meal Variety: ${varietyDescription}
+
+Current Supplements: ${supplementsText}
+
 -----------------------
 REQUIREMENTS
 -----------------------
@@ -81,10 +114,21 @@ REQUIREMENTS
      - Carbohydrates (g)
      - Fats (g)
    - Protein should be prioritized appropriately based on goal and training experience.
+    ${
+      supplementsList.length > 0
+        ? "- Account for protein from supplements when calculating food-based protein needs."
+        : ""
+    }
 
 3. **Meal Breakdown**
    - Split calories and macros logically across all meals.
    ${formData.mealsPerDay === "4" ? "- Include **PRE-WORKOUT MEAL**." : ""}
+    - **IMPORTANT**: Follow the meal variety preference: ${varietyDescription}
+   ${
+     formData.mealVariety !== "standard"
+       ? `- Provide ${formData.mealVariety === "3-day-rotation" ? "3" : "5"} completely different meal plans for each day of the rotation cycle.`
+       : ""
+   }
 
 4. **Food Selection Rules**
    - STRICTLY EXCLUDE allergic foods.
@@ -92,7 +136,17 @@ REQUIREMENTS
    - Foods should match the user's region and food type.
    - Beginner-friendly and realistic meal choices.
 
-5. **OUTPUT FORMAT (VERY IMPORTANT)**
+5. **Supplement Integration**
+   ${
+     supplementsList.length > 0
+       ? `- User is currently taking: ${supplementsText}
+   - Mention optimal timing for each supplement
+   - Account for calories and protein from protein supplements
+   - Provide brief guidance on dosage if relevant`
+       : "- No supplements currently used"
+   }
+
+6. **OUTPUT FORMAT (VERY IMPORTANT)**
    - Use TABLE FORMAT ONLY.
    - Each meal should have:
      - Individual food items
@@ -105,7 +159,7 @@ REQUIREMENTS
      - Total calories & macros per meal
      - Final daily total calories & macros
 
-6. **Extra Guidelines**
+7. **Extra Guidelines**
    - Beginner-friendly explanations (simple language).
    - Mention hydration guidance briefly.
    - Avoid extreme or crash dieting.
@@ -117,12 +171,16 @@ OUTPUT STRUCTURE
 
 1. **Calorie & Macro Summary Table**
 2. **Meal-wise Nutrition Tables**
-   - Breakfast
+   ${
+     formData.mealVariety !== "standard"
+       ? `   - Provide ${formData.mealVariety === "3-day-rotation" ? "Day 1, Day 2, Day 3" : "Day 1 through Day 5"} meal plans\n`
+       : ""
+   }   - Breakfast
    - Lunch
-   ${formData.mealsPerDay === "4" ? "- Pre-Workout" : ""}
+   ${formData.mealsPerDay === "4" ? "   - Pre-Workout\n" : ""}
    - Dinner
-3. **Daily Total Summary Table**
-4. **Short Notes & Tips (2 - 3 lines)**
+3. ${supplementsList.length > 0 ? "**Supplement Schedule & Timing**\n4. " : ""}**Daily Total Summary Table**
+${supplementsList.length > 0 ? "5. " : "4. "}**Short Notes & Tips (2 - 3 lines)**
 
 Generate the plan now.`;
 };

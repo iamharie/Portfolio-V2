@@ -8,7 +8,7 @@ interface WorkoutPlan {
 }
 
 const beginnerWorkouts: WorkoutPlan[] = [
-  { day: "Day 1", link: "https://example.com/beginner-day1" },
+  { day: "Day 1", link: "https://link.strong.app/vxzzzjvc" },
   { day: "Day 2", link: "https://example.com/beginner-day2" },
   { day: "Day 3", link: "https://example.com/beginner-day3" },
 ];

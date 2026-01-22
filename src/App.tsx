@@ -6,6 +6,7 @@ import Experience from "./pages/Experience";
 import ContactPage from "./pages/ContactPage";
 import ProjectPage from "./pages/ProjectPage";
 import StayStrongPage from "./components/staystrong/StayStrongPage";
+import StayStrongFallback from "./components/staystrong/StayStrongFallback";
 import Root from "./pages/Root";
 
 export default function App() {
@@ -17,9 +18,11 @@ export default function App() {
         { index: true, element: <Home /> },
         { path: "experience", element: <Experience /> },
         { path: "team", element: <ProjectPage /> },
-        { path: "sslogin", element: <StayStrongPage /> },
-        // { path: "skills", element: <IconCloudDemo /> },
         { path: "contact", element: <ContactPage /> },
+        { path: "staystrong", element: <StayStrongFallback /> },
+
+        // Beta testing route (for closed users)
+        { path: "staystrong/closed-access", element: <StayStrongPage /> },
       ],
     },
   ]);

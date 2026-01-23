@@ -8,7 +8,12 @@ interface FormData {
   age: string;
   weight: { value: string; unit: "kg" | "lbs" };
   height: { value: string; unit: "cm" | "ft"; feet?: string; inches?: string };
-  region: string;
+  region: {
+    nativeRegion: string;
+    nativeCustomCountry: string;
+    currentRegion: string;
+    currentCustomCountry: string;
+  };
   trainingExperience: string;
   dietType: string;
   allergies: string[];
@@ -52,6 +57,27 @@ export const generateNutritionPrompt = (formData: FormData): string => {
   const supplementsText =
     supplementsList.length > 0 ? supplementsList.join(", ") : "None";
 
+  // Construct region information
+  const getNativeRegion = () => {
+    return formData.region.nativeRegion === "Other"
+      ? formData.region.nativeCustomCountry
+      : formData.region.nativeRegion;
+  };
+
+  const getCurrentRegion = () => {
+    if (!formData.region.currentRegion) return null;
+    return formData.region.currentRegion === "Other"
+      ? formData.region.currentCustomCountry
+      : formData.region.currentRegion;
+  };
+
+  const nativeRegion = getNativeRegion();
+  const currentRegion = getCurrentRegion();
+
+  const regionText =
+    currentRegion && currentRegion !== nativeRegion
+      ? `Native Food Culture: ${nativeRegion}\nCurrent Location: ${currentRegion}`
+      : `Region: ${nativeRegion}`;
   return `You are a certified nutrition coach and fitness expert.
 
 Generate a COMPLETE, PRACTICAL, and SCIENTIFICALLY ACCURATE nutrition plan based on the user details below.
@@ -69,7 +95,7 @@ Body Weight: ${formData.weight.value} ${formData.weight.unit}
 
 Height: ${heightValue}
 
-Region: ${formData.region}
+${regionText}
 
 Training Experience: ${formData.trainingExperience}
 
@@ -133,7 +159,13 @@ REQUIREMENTS
 4. **Food Selection Rules**
    - STRICTLY EXCLUDE allergic foods.
    - INCLUDE preferred foods (but do not limit the plan only to them).
-   - Foods should match the user's region and food type.
+  ${
+    currentRegion && currentRegion !== nativeRegion
+      ? `- Base food choices on ${nativeRegion} cuisine (user's native food culture).
+  - Ensure ingredients are readily available in ${currentRegion} (user's current location).
+  - Provide alternatives if certain traditional ingredients are hard to find locally.`
+      : `- Foods should match the user's region (${nativeRegion}) and food type.`
+  }
    - Beginner-friendly and realistic meal choices.
 
 5. **Supplement Integration**

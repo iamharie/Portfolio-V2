@@ -29,7 +29,10 @@ interface FormData {
     currentRegion: string;
     currentCustomCountry: string;
   };
-  trainingExperience: string;
+  trainingExperience: {
+    type: string;
+    breakDuration?: string;
+  };
   dietType: string;
   allergies: string[];
   preferredFoods: string[];
@@ -55,7 +58,10 @@ const Nutrition: React.FC = () => {
       currentRegion: "",
       currentCustomCountry: "",
     },
-    trainingExperience: "",
+    trainingExperience: {
+      type: "",
+      breakDuration: undefined,
+    },
     dietType: "",
     allergies: [],
     preferredFoods: [],
@@ -126,7 +132,15 @@ const Nutrition: React.FC = () => {
           return false;
         return true;
       case 5:
-        return formData.trainingExperience !== "";
+        if (formData.trainingExperience.type === "") return false;
+        // If "Previously Trained" is selected, validate break duration
+        if (
+          formData.trainingExperience.type ===
+            "Previously Trained (Returning After a Break)" &&
+          !formData.trainingExperience.breakDuration
+        )
+          return false;
+        return true;
       case 6:
         return formData.dietType !== "";
       case 7:
@@ -675,40 +689,169 @@ const Nutrition: React.FC = () => {
           </div>
         );
 
+      // case 5:
+      //   return (
+      //     <div className="space-y-6">
+      //       <h2 className="text-3xl font-bold text-accent mb-2">
+      //         Training Experience
+      //       </h2>
+      //       <p className="text-sm text-gray-500 mb-4">
+      //         This helps us adjust calories & protein correctly
+      //       </p>
+      //       <div className="space-y-3">
+      //         {[
+      //           "Less than 6 months",
+      //           "6–12 months",
+      //           "1–2 years",
+      //           "2+ years",
+      //         ].map((exp) => (
+      //           <button
+      //             key={exp}
+      //             type="button"
+      //             onClick={() =>
+      //               setFormData({ ...formData, trainingExperience: exp })
+      //             }
+      //             className={`w-full p-4 rounded-lg border-2 text-left transition-all ${
+      //               formData.trainingExperience === exp
+      //                 ? "border-accent bg-accent/10"
+      //                 : "border-secondary dark:border-secondary-light hover:border-accent/50"
+      //             }`}
+      //           >
+      //             <span className="font-semibold text-text-light dark:text-text-dark">
+      //               {exp}
+      //             </span>
+      //           </button>
+      //         ))}
+      //       </div>
+      //     </div>
+      //   );
       case 5:
+        const trainingTypes = [
+          {
+            id: "Complete Beginner",
+            title: "Complete Beginner",
+            description: "Never trained consistently before",
+          },
+          {
+            id: "Beginner (New to Structured Training)",
+            title: "Beginner (New to Structured Training)",
+            description: "Some exposure, but less than 6 months total",
+          },
+          {
+            id: "Previously Trained (Returning After a Break)",
+            title: "Previously Trained (Returning After a Break)",
+            description: "Trained seriously in the past, restarting now",
+          },
+          {
+            id: "Experienced Lifter",
+            title: "Experienced Lifter",
+            description: "Training consistently for 1+ years",
+          },
+        ];
+
+        const breakDurations = [
+          "Less than 3 months",
+          "3–6 months",
+          "6–12 months",
+          "1+ year",
+        ];
+
+        const showBreakDuration =
+          formData.trainingExperience.type ===
+          "Previously Trained (Returning After a Break)";
+
         return (
           <div className="space-y-6">
             <h2 className="text-3xl font-bold text-accent mb-2">
-              Training Experience
+              Training Background
             </h2>
             <p className="text-sm text-gray-500 mb-4">
-              This helps us adjust calories & protein correctly
+              This helps us adjust calories, recovery, and progression safely.
             </p>
-            <div className="space-y-3">
-              {[
-                "Less than 6 months",
-                "6–12 months",
-                "1–2 years",
-                "2+ years",
-              ].map((exp) => (
-                <button
-                  key={exp}
-                  type="button"
-                  onClick={() =>
-                    setFormData({ ...formData, trainingExperience: exp })
-                  }
-                  className={`w-full p-4 rounded-lg border-2 text-left transition-all ${
-                    formData.trainingExperience === exp
-                      ? "border-accent bg-accent/10"
-                      : "border-secondary dark:border-secondary-light hover:border-accent/50"
-                  }`}
-                >
-                  <span className="font-semibold text-text-light dark:text-text-dark">
-                    {exp}
-                  </span>
-                </button>
-              ))}
+
+            {/* Question 1 - Experience Type */}
+            <div>
+              <label className="block text-sm font-medium mb-3 text-text-light dark:text-text-dark">
+                How would you describe your training background?{" "}
+                <span className="text-red-500">*</span>
+              </label>
+              <div className="space-y-3">
+                {trainingTypes.map((type) => (
+                  <button
+                    key={type.id}
+                    type="button"
+                    onClick={() =>
+                      setFormData({
+                        ...formData,
+                        trainingExperience: {
+                          type: type.id,
+                          breakDuration:
+                            type.id ===
+                            "Previously Trained (Returning After a Break)"
+                              ? formData.trainingExperience.breakDuration
+                              : undefined,
+                        },
+                      })
+                    }
+                    className={`w-full p-4 rounded-lg border-2 text-left transition-all ${
+                      formData.trainingExperience.type === type.id
+                        ? "border-accent bg-accent/10 shadow-lg"
+                        : "border-secondary dark:border-secondary-light hover:border-accent/50"
+                    }`}
+                  >
+                    <div className="font-semibold text-text-light dark:text-text-dark mb-1">
+                      {type.title}
+                    </div>
+                    <p className="text-sm text-gray-500">{type.description}</p>
+                  </button>
+                ))}
+              </div>
             </div>
+
+            {/* Question 2 - Break Duration (Conditional) */}
+            {showBreakDuration && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+                className="pt-4 border-t border-secondary dark:border-secondary-light"
+              >
+                <label className="block text-sm font-medium mb-2 text-text-light dark:text-text-dark">
+                  How long was your break from training?{" "}
+                  <span className="text-red-500">*</span>
+                </label>
+                <p className="text-xs text-gray-500 mb-3">
+                  Muscle memory helps, but recovery & calories need adjustment.
+                </p>
+
+                <div className="space-y-2">
+                  {breakDurations.map((duration) => (
+                    <button
+                      key={duration}
+                      type="button"
+                      onClick={() =>
+                        setFormData({
+                          ...formData,
+                          trainingExperience: {
+                            ...formData.trainingExperience,
+                            breakDuration: duration,
+                          },
+                        })
+                      }
+                      className={`w-full p-3 rounded-lg border-2 text-left transition-all ${
+                        formData.trainingExperience.breakDuration === duration
+                          ? "border-accent bg-accent/10"
+                          : "border-secondary dark:border-secondary-light hover:border-accent/50"
+                      }`}
+                    >
+                      <span className="font-medium text-text-light dark:text-text-dark">
+                        {duration}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </motion.div>
+            )}
           </div>
         );
 
@@ -1276,7 +1419,6 @@ const Nutrition: React.FC = () => {
                   });
                   setSupplementNameInput("");
                   setSupplementBrandInput("");
-                  setCustomRegionInput("");
                 }}
                 className="text-accent hover:text-blue-600 font-semibold underline"
               >

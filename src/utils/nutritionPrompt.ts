@@ -14,7 +14,10 @@ interface FormData {
     currentRegion: string;
     currentCustomCountry: string;
   };
-  trainingExperience: string;
+  trainingExperience: {
+    type: string;
+    breakDuration?: string;
+  };
   dietType: string;
   allergies: string[];
   preferredFoods: string[];
@@ -78,6 +81,12 @@ export const generateNutritionPrompt = (formData: FormData): string => {
     currentRegion && currentRegion !== nativeRegion
       ? `Native Food Culture: ${nativeRegion}\nCurrent Location: ${currentRegion}`
       : `Region: ${nativeRegion}`;
+
+  // Construct training experience text
+  const trainingExperienceText = formData.trainingExperience.breakDuration
+    ? `${formData.trainingExperience.type} (Break Duration: ${formData.trainingExperience.breakDuration})`
+    : formData.trainingExperience.type;
+
   return `You are a certified nutrition coach and fitness expert.
 
 Generate a COMPLETE, PRACTICAL, and SCIENTIFICALLY ACCURATE nutrition plan based on the user details below.
@@ -97,7 +106,7 @@ Height: ${heightValue}
 
 ${regionText}
 
-Training Experience: ${formData.trainingExperience}
+Training Background: ${trainingExperienceText}
 
 Food Type: ${formData.dietType}
 
@@ -128,18 +137,32 @@ REQUIREMENTS
      - Gender
      - Height
      - Weight
-     - Training experience
+     - Training background${
+       formData.trainingExperience.breakDuration
+         ? " (account for muscle memory and adjustment period after break)"
+         : ""
+     }
    - Clearly mention:
      - BMR
      - TDEE
      - Final Target Calories
+    ${
+      formData.trainingExperience.breakDuration
+        ? "- Consider gradual progression for someone returning after a break"
+        : ""
+    }
 
 2. **Macronutrient Split**
    - Calculate daily:
      - Protein (g)
      - Carbohydrates (g)
      - Fats (g)
-   - Protein should be prioritized appropriately based on goal and training experience.
+   - Protein should be prioritized appropriately based on goal and training background.
+    ${
+      formData.trainingExperience.breakDuration
+        ? "- Account for enhanced protein needs during re-training phase (muscle memory adaptation)."
+        : ""
+    }
     ${
       supplementsList.length > 0
         ? "- Account for protein from supplements when calculating food-based protein needs."
@@ -194,6 +217,11 @@ REQUIREMENTS
 7. **Extra Guidelines**
    - Beginner-friendly explanations (simple language).
    - Mention hydration guidance briefly.
+  ${
+    formData.trainingExperience.breakDuration
+      ? "- Provide specific recovery and adaptation guidance for someone returning after a break."
+      : ""
+  }
    - Avoid extreme or crash dieting.
    - No medical claims.
 
@@ -212,7 +240,13 @@ OUTPUT STRUCTURE
    ${formData.mealsPerDay === "4" ? "   - Pre-Workout\n" : ""}
    - Dinner
 3. ${supplementsList.length > 0 ? "**Supplement Schedule & Timing**\n4. " : ""}**Daily Total Summary Table**
-${supplementsList.length > 0 ? "5. " : "4. "}**Short Notes & Tips (2 - 3 lines)**
+${supplementsList.length > 0 ? "5. " : "4. "}**Short Notes & Tips (2 - 3 lines)**${
+    formData.trainingExperience.breakDuration
+      ? "\n" +
+        (supplementsList.length > 0 ? "6. " : "5. ") +
+        "**Recovery & Progression Notes for Returning Trainees**"
+      : ""
+  }
 
 Generate the plan now.`;
 };

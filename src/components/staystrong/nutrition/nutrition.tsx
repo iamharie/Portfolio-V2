@@ -23,7 +23,12 @@ interface FormData {
   age: string;
   weight: { value: string; unit: "kg" | "lbs" };
   height: { value: string; unit: "cm" | "ft"; feet?: string; inches?: string };
-  region: string;
+  region: {
+    nativeRegion: string;
+    nativeCustomCountry: string;
+    currentRegion: string;
+    currentCustomCountry: string;
+  };
   trainingExperience: string;
   dietType: string;
   allergies: string[];
@@ -44,7 +49,12 @@ const Nutrition: React.FC = () => {
     age: "",
     weight: { value: "", unit: "kg" },
     height: { value: "", unit: "cm" },
-    region: "",
+    region: {
+      nativeRegion: "",
+      nativeCustomCountry: "",
+      currentRegion: "",
+      currentCustomCountry: "",
+    },
     trainingExperience: "",
     dietType: "",
     allergies: [],
@@ -57,7 +67,9 @@ const Nutrition: React.FC = () => {
     },
   });
 
-  const [customRegionInput, setCustomRegionInput] = useState("");
+  // const [customRegionInput, setCustomRegionInput] = useState("");
+  const [nativeCustomInput, setNativeCustomInput] = useState("");
+  const [currentCustomInput, setCurrentCustomInput] = useState("");
   const [allergyInput, setAllergyInput] = useState("");
   const [preferredFoodInput, setPreferredFoodInput] = useState("");
   const [supplementNameInput, setSupplementNameInput] = useState("");
@@ -93,10 +105,26 @@ const Nutrition: React.FC = () => {
         }
       case 4:
         // Validate that if "Other" is selected, custom input is provided
-        if (formData.region === "Other") {
-          return customRegionInput.trim() !== "";
-        }
-        return formData.region !== "";
+        // if (formData.region === "Other") {
+        //   return customRegionInput.trim() !== "";
+        // }
+        // return formData.region !== "";
+        // Validate native region
+        if (formData.region.nativeRegion === "") return false;
+        if (
+          formData.region.nativeRegion === "Other" &&
+          formData.region.nativeCustomCountry.trim() === ""
+        )
+          return false;
+
+        // If current region is shown and selected, validate it
+        if (
+          formData.region.currentRegion !== "" &&
+          formData.region.currentRegion === "Other" &&
+          formData.region.currentCustomCountry.trim() === ""
+        )
+          return false;
+        return true;
       case 5:
         return formData.trainingExperience !== "";
       case 6:
@@ -472,77 +500,94 @@ const Nutrition: React.FC = () => {
         );
 
       case 4:
+        const regionOptions = ["India", "USA", "Australia", "Other"];
+
+        // Helper function to get the actual region value
+        const getActualRegion = (region: string, customCountry: string) => {
+          return region === "Other" ? customCountry : region;
+        };
+
+        const actualNativeRegion = getActualRegion(
+          formData.region.nativeRegion,
+          formData.region.nativeCustomCountry,
+        );
+
+        const actualCurrentRegion = getActualRegion(
+          formData.region.currentRegion,
+          formData.region.currentCustomCountry,
+        );
+
+        // Only show current region section if native region is selected and they're different
+        const showCurrentRegion =
+          formData.region.nativeRegion !== "" &&
+          (formData.region.currentRegion === "" ||
+            actualNativeRegion !== actualCurrentRegion);
+
         return (
           <div className="space-y-6">
-            <h2 className="text-3xl font-bold text-accent mb-2">Region</h2>
-            <p className="text-text-light dark:text-text-dark mb-4">
-              Select your location
-            </p>
+            <h2 className="text-3xl font-bold text-accent mb-2">
+              Food Culture & Location
+            </h2>
 
-            <div className="space-y-3">
-              {["India", "USA", "Australia"].map((region) => (
-                <button
-                  key={region}
-                  type="button"
-                  onClick={() => {
-                    setFormData({ ...formData, region });
-                    setCustomRegionInput(""); // Clear custom input when selecting predefined
-                  }}
-                  className={`w-full p-4 rounded-lg border-2 text-left transition-all ${
-                    formData.region === region
-                      ? "border-accent bg-accent/10 shadow-lg"
-                      : "border-secondary dark:border-secondary-light hover:border-accent/50"
-                  }`}
-                >
-                  <span className="font-semibold text-text-light dark:text-text-dark">
-                    {region}
-                  </span>
-                </button>
-              ))}
+            {/* Native Region Section */}
+            <div>
+              <label className="block text-sm font-medium mb-2 text-text-light dark:text-text-dark">
+                Which region's food do you mostly eat?{" "}
+                <span className="text-red-500">*</span>
+              </label>
+              <p className="text-xs text-gray-500 mb-3">
+                This helps us understand your food preferences.
+              </p>
 
-              {/* Other Option */}
-              <button
-                type="button"
-                onClick={() => {
-                  setFormData({ ...formData, region: "Other" });
-                  setCustomRegionInput(""); // Clear input when clicking Other
+              <select
+                value={formData.region.nativeRegion}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  setFormData({
+                    ...formData,
+                    region: {
+                      ...formData.region,
+                      nativeRegion: value,
+                      nativeCustomCountry: value === "Other" ? "" : "",
+                      // Don't reset current region anymore
+                    },
+                  });
+                  setNativeCustomInput("");
                 }}
-                className={`w-full p-4 rounded-lg border-2 text-left transition-all ${
-                  formData.region === "Other" ||
-                  !["India", "USA", "Australia"].includes(formData.region)
-                    ? "border-accent bg-accent/10 shadow-lg"
-                    : "border-secondary dark:border-secondary-light hover:border-accent/50"
-                }`}
+                className="w-full px-4 py-3 rounded-lg border border-secondary dark:border-secondary-light bg-white dark:bg-gray-800 text-text-light dark:text-text-dark focus:outline-none focus:ring-2 focus:ring-accent"
               >
-                <span className="font-semibold text-text-light dark:text-text-dark">
-                  Other
-                  {customRegionInput && ` (${customRegionInput})`}
-                </span>
-              </button>
+                <option value="">Select a region</option>
+                {regionOptions.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
 
-              {/* Conditional Input for Other */}
-              {(formData.region === "Other" ||
-                !["India", "USA", "Australia"].includes(formData.region)) && (
+              {/* Native Custom Country Input */}
+              {formData.region.nativeRegion === "Other" && (
                 <motion.div
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="mt-4"
+                  className="mt-3"
                 >
                   <label className="block text-sm font-medium mb-2 text-text-light dark:text-text-dark">
-                    Enter Your Country <span className="text-red-500">*</span>
+                    Enter country <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
-                    value={customRegionInput}
+                    value={nativeCustomInput}
                     onChange={(e) => {
                       const value = e.target.value;
-                      setCustomRegionInput(value);
-                      // Update formData.region with the actual input or keep "Other" if empty
+                      setNativeCustomInput(value);
                       setFormData({
                         ...formData,
-                        region: value.trim() || "Other",
+                        region: {
+                          ...formData.region,
+                          nativeCustomCountry: value.trim(),
+                        },
                       });
                     }}
                     placeholder="e.g. Canada"
@@ -552,6 +597,81 @@ const Nutrition: React.FC = () => {
                 </motion.div>
               )}
             </div>
+
+            {/* Current Region Section - Only show if needed */}
+            {showCurrentRegion && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+                className="pt-4 border-t border-secondary dark:border-secondary-light"
+              >
+                <label className="block text-sm font-medium mb-2 text-text-light dark:text-text-dark">
+                  Where are you currently living?
+                </label>
+                <p className="text-xs text-gray-500 mb-3">
+                  This helps us recommend ingredients that are easy to find
+                  locally.
+                </p>
+
+                <select
+                  value={formData.region.currentRegion}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    setFormData({
+                      ...formData,
+                      region: {
+                        ...formData.region,
+                        currentRegion: value,
+                        currentCustomCountry: value === "Other" ? "" : "",
+                      },
+                    });
+                    setCurrentCustomInput("");
+                  }}
+                  className="w-full px-4 py-3 rounded-lg border border-secondary dark:border-secondary-light bg-white dark:bg-gray-800 text-text-light dark:text-text-dark focus:outline-none focus:ring-2 focus:ring-accent"
+                >
+                  <option value="">Same as above</option>
+                  {regionOptions.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+
+                {/* Current Custom Country Input */}
+                {formData.region.currentRegion === "Other" && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="mt-3"
+                  >
+                    <label className="block text-sm font-medium mb-2 text-text-light dark:text-text-dark">
+                      Enter country <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      value={currentCustomInput}
+                      onChange={(e) => {
+                        const value = e.target.value;
+                        setCurrentCustomInput(value);
+                        setFormData({
+                          ...formData,
+                          region: {
+                            ...formData.region,
+                            currentCustomCountry: value.trim(),
+                          },
+                        });
+                      }}
+                      placeholder="e.g. Canada"
+                      autoFocus
+                      className="w-full px-4 py-3 rounded-lg border border-secondary dark:border-secondary-light bg-white dark:bg-gray-800 text-text-light dark:text-text-dark focus:outline-none focus:ring-2 focus:ring-accent"
+                    />
+                  </motion.div>
+                )}
+              </motion.div>
+            )}
           </div>
         );
 

@@ -20,8 +20,10 @@ const StayStrongPage: React.FC = () => {
 
   return (
     <>
-      <Nutrition />
-      <Workout />
+      <StayStrongLogin />
+
+      {/* <Nutrition />
+      <Workout /> */}
       {/* {userEmail ? (
         <StayStrongLanding userEmail={userEmail} userName={userName || ""} />
       ) : (

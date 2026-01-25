@@ -7,6 +7,9 @@ import ContactPage from "./pages/ContactPage";
 import ProjectPage from "./pages/ProjectPage";
 import StayStrongPage from "./components/staystrong/StayStrongPage";
 import StayStrongFallback from "./components/staystrong/StayStrongFallback";
+import Workout from "./components/staystrong/workout/workout";
+
+import ProtectedRoute from "./auth/ProtectedRoute";
 import Root from "./pages/Root";
 
 export default function App() {
@@ -20,6 +23,13 @@ export default function App() {
         { path: "team", element: <ProjectPage /> },
         { path: "contact", element: <ContactPage /> },
         { path: "staystrong", element: <StayStrongFallback /> },
+
+        // 🔐 Protected StayStrong app
+        {
+          path: "staystrong/app",
+          element: <ProtectedRoute />,
+          children: [{ index: true, element: <Workout /> }],
+        },
 
         // Beta testing route (for closed users)
         { path: "staystrong/closed-access", element: <StayStrongPage /> },

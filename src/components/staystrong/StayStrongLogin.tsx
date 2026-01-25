@@ -1,5 +1,16 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { loginUser, registerUser } from "../../api/auth";
+
+type FormMode = "login" | "register";
+
+interface Errors {
+  email?: string;
+  password?: string;
+  name?: string;
+  form?: string;
+}
 
 interface TestPageProps {
   onEmailSubmit?: (email: string, name: string) => void;
@@ -8,48 +19,69 @@ interface TestPageProps {
 const StayStrongLogin: React.FC<TestPageProps> = ({ onEmailSubmit }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [errors, setErrors] = useState({ name: "", email: "" });
+  const [password, setPassword] = useState("");
+  const [mode, setMode] = useState<FormMode>("login");
+  const [errors, setErrors] = useState<Errors>({});
   const [isLoading, setIsLoading] = useState(false);
+  const [infoMessage, setInfoMessage] = useState("");
+  const navigate = useNavigate();
 
   const validateEmail = (email: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setErrors({ name: "", email: "" });
+    setErrors({});
+    setInfoMessage("");
 
-    let hasError = false;
-    const newErrors = { name: "", email: "" };
-
-    if (!name.trim()) {
-      newErrors.name = "Name is required";
-      hasError = true;
-    }
-
+    const newErrors: Errors = {};
     if (!email.trim()) {
       newErrors.email = "Email is required";
-      hasError = true;
     } else if (!validateEmail(email)) {
       newErrors.email = "Please enter a valid email address";
-      hasError = true;
     }
 
-    if (hasError) {
+    if (!password.trim()) {
+      newErrors.password = "Password is required";
+    } else if (password.trim().length < 6) {
+      newErrors.password = "Password must be at least 6 characters";
+    }
+
+    if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
     }
 
     setIsLoading(true);
+    try {
+      if (mode === "login") {
+        const data = await loginUser(email, password);
 
-    // Simulate API call
-    setTimeout(() => {
-      setIsLoading(false);
-      if (onEmailSubmit) {
-        onEmailSubmit(email, name);
+        // store token
+        localStorage.setItem("accessToken", data.token);
+        localStorage.setItem("user", JSON.stringify(data.user));
+        navigate("/staystrong/app");
+
+        if (onEmailSubmit) {
+          onEmailSubmit(data.user.email, data.user.name || "");
+        }
+      } else {
+        await registerUser(email, password, name || undefined);
+
+        setInfoMessage("Account created successfully. Please log in.");
+        setMode("login");
+        setPassword("");
       }
-    }, 500);
+    } catch (err) {
+      setErrors((prev) => ({
+        ...prev,
+        form: (err as Error)?.message || "Something went wrong",
+      }));
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -67,9 +99,34 @@ const StayStrongLogin: React.FC<TestPageProps> = ({ onEmailSubmit }) => {
             <p className="text-xl text-text-light dark:text-text-dark">
               ⚠️ Work In Progress ⚠️
             </p>
-            {/* <p className="text-xl text-text-light dark:text-text-dark">
-              Enter your details to access your fitness journey
-            </p> */}
+          </div>
+
+          {/* Mode toggle */}
+          <div className="flex justify-center gap-3 mb-4">
+            <button
+              type="button"
+              onClick={() => setMode("login")}
+              disabled={isLoading}
+              className={`px-4 py-2 rounded-md border ${
+                mode === "login"
+                  ? "bg-accent text-white"
+                  : "bg-transparent text-text-light dark:text-text-dark"
+              } disabled:opacity-50`}
+            >
+              Login
+            </button>
+            <button
+              type="button"
+              onClick={() => setMode("register")}
+              disabled={isLoading}
+              className={`px-4 py-2 rounded-md border ${
+                mode === "register"
+                  ? "bg-accent text-white"
+                  : "bg-transparent text-text-light dark:text-text-dark"
+              } disabled:opacity-50`}
+            >
+              Create Account
+            </button>
           </div>
 
           <motion.form
@@ -79,33 +136,37 @@ const StayStrongLogin: React.FC<TestPageProps> = ({ onEmailSubmit }) => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            <div className="mb-6">
-              <label
-                htmlFor="name"
-                className="block text-sm font-medium mb-2 text-text-light dark:text-text-dark"
-              >
-                Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg border border-secondary dark:border-secondary-light bg-white dark:bg-gray-800 text-text-light dark:text-text-dark focus:outline-none focus:ring-2 focus:ring-accent transition-all"
-                placeholder="Enter your name"
-                disabled={isLoading}
-              />
-              {errors.name && (
-                <motion.p
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="mt-2 text-sm text-red-500"
+            {/* Name (register only, optional) */}
+            {mode === "register" && (
+              <div className="mb-6">
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium mb-2 text-text-light dark:text-text-dark"
                 >
-                  {errors.name}
-                </motion.p>
-              )}
-            </div>
+                  Name (optional)
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="w-full px-4 py-3 rounded-lg border border-secondary dark:border-secondary-light bg-white dark:bg-gray-800 text-text-light dark:text-text-dark focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                  placeholder="Enter your name"
+                  disabled={isLoading}
+                />
+                {errors.name && (
+                  <motion.p
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mt-2 text-sm text-red-500"
+                  >
+                    {errors.name}
+                  </motion.p>
+                )}
+              </div>
+            )}
 
+            {/* Email */}
             <div className="mb-6">
               <label
                 htmlFor="email"
@@ -133,13 +194,70 @@ const StayStrongLogin: React.FC<TestPageProps> = ({ onEmailSubmit }) => {
               )}
             </div>
 
+            {/* Password */}
+            <div className="mb-6">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium mb-2 text-text-light dark:text-text-dark"
+              >
+                Password
+              </label>
+              <input
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full px-4 py-3 rounded-lg border border-secondary dark:border-secondary-light bg-white dark:bg-gray-800 text-text-light dark:text-text-dark focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                placeholder={
+                  mode === "login"
+                    ? "Enter your password"
+                    : "Create a password (min 6 chars)"
+                }
+                disabled={isLoading}
+              />
+              {errors.password && (
+                <motion.p
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mt-2 text-sm text-red-500"
+                >
+                  {errors.password}
+                </motion.p>
+              )}
+            </div>
+
+            {/* Form-level errors or info */}
+            {errors.form && (
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="mb-4 text-sm text-red-500"
+              >
+                {errors.form}
+              </motion.p>
+            )}
+            {infoMessage && (
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="mb-4 text-sm text-green-600"
+              >
+                {infoMessage}
+              </motion.p>
+            )}
+
             <button
               type="submit"
-              disabled={true}
-              // disabled={isLoading}
+              disabled={isLoading}
               className="w-full bg-accent hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isLoading ? "Validating..." : "Get Started"}
+              {isLoading
+                ? mode === "login"
+                  ? "Logging in..."
+                  : "Creating account..."
+                : mode === "login"
+                  ? "Log In"
+                  : "Create Account"}
             </button>
           </motion.form>
 

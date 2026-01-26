@@ -68,9 +68,11 @@ const StayStrongLogin: React.FC<TestPageProps> = ({ onEmailSubmit }) => {
           onEmailSubmit(data.user.email, data.user.name || "");
         }
       } else {
-        await registerUser(email, password, name || undefined);
+        const data = await registerUser(email, password, name || undefined);
 
-        setInfoMessage("Account created successfully. Please log in.");
+        setInfoMessage(
+          data?.message || "Account created successfully. Please log in.",
+        );
         setMode("login");
         setPassword("");
       }
@@ -244,6 +246,18 @@ const StayStrongLogin: React.FC<TestPageProps> = ({ onEmailSubmit }) => {
               >
                 {infoMessage}
               </motion.p>
+            )}
+
+            {/* Forgot password link (login mode only) */}
+            {mode === "login" && (
+              <div className="mb-4 text-right">
+                <a
+                  href="/staystrong/forgot-password"
+                  className="text-sm text-accent hover:underline"
+                >
+                  Forgot password?
+                </a>
+              </div>
             )}
 
             <button

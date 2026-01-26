@@ -8,6 +8,9 @@ import ProjectPage from "./pages/ProjectPage";
 import StayStrongPage from "./components/staystrong/StayStrongPage";
 import StayStrongFallback from "./components/staystrong/StayStrongFallback";
 import Workout from "./components/staystrong/workout/workout";
+import VerifyEmail from "./components/staystrong/pages/VerifyEmail";
+import ForgotPassword from "./components/staystrong/pages/ForgotPassword";
+import ResetPassword from "./components/staystrong/pages/ResetPassword";
 
 import ProtectedRoute from "./auth/ProtectedRoute";
 import Root from "./pages/Root";
@@ -23,6 +26,11 @@ export default function App() {
         { path: "team", element: <ProjectPage /> },
         { path: "contact", element: <ContactPage /> },
         { path: "staystrong", element: <StayStrongFallback /> },
+
+        { path: "staystrong/forgot-password", element: <ForgotPassword /> },
+        { path: "reset-password", element: <ResetPassword /> },
+        // ✅ Email verification (PUBLIC)
+        { path: "verify-email", element: <VerifyEmail /> },
 
         // 🔐 Protected StayStrong app
         {

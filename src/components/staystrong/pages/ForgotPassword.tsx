@@ -134,7 +134,7 @@ const ForgotPassword = () => {
             {/* Back to login link */}
             <div className="mt-4 text-center">
               <a
-                href="/staystrong/closed-access"
+                href="/staystrong"
                 className="text-sm text-accent hover:underline"
               >
                 Back to Login

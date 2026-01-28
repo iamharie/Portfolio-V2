@@ -28,18 +28,17 @@ const StayStrongFallback = () => {
         <div className="bg-secondary-light dark:bg-secondary rounded-2xl p-8 shadow-xl mb-8">
           <FaLock className="text-5xl text-accent mx-auto mb-4" />
           <h2 className="text-3xl font-bold text-text-light dark:text-text-dark mb-4">
-            Coming Soon
+            Nutrition Module - Coming Soon
           </h2>
           <p className="text-lg text-text-light dark:text-text-dark mb-6 leading-relaxed">
-            StayStrong is currently in{" "}
+            StayStrong Nutrition is currently in{" "}
             <span className="font-bold text-accent">beta testing</span> with a
-            select group of users.
+            limited group of users.
           </p>
           <p className="text-md text-gray-600 dark:text-gray-400">
-            This fitness companion tool helps you build strength the right way
-            with a free training block for beginners and intermediate lifters,
-            plus nutrition guidance generated from a smart, curated prompt based
-            on your inputs.
+            This module helps you generate a personalized nutrition plan
+            instantly, based on your inputs such as goals, body metrics, food
+            preferences, and meal structure.
           </p>
         </div>
 
@@ -49,27 +48,28 @@ const StayStrongFallback = () => {
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
             <div className="flex items-start gap-3">
-              <span className="text-2xl">💪</span>
+              <span className="text-2xl">🥗</span>
               <div>
                 <h4 className="font-semibold text-text-light dark:text-text-dark">
-                  Free Training Block
+                  Personalized Nutrition Plans
                 </h4>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  A structured beginner-to-intermediate training program that
-                  links to the Strong app, where you can follow a training
-                  template personally designed by me.
+                  Get a complete, goal-aligned nutrition plan generated directly
+                  within StayStrong, tailored to your lifestyle, training level,
+                  and dietary preferences.
                 </p>
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <span className="text-2xl">🥗</span>
+              <span className="text-2xl">📊</span>
               <div>
                 <h4 className="font-semibold text-text-light dark:text-text-dark">
-                  Nutrition Plan Generator
+                  Smart, Structured Inputs
                 </h4>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Create a custom nutrition prompt from your inputs and use it
-                  in your favorite AI tool to generate your nutrition plan.
+                  Answer a few guided questions designed around real-world
+                  eating habits to receive a practical and sustainable nutrition
+                  plan.
                 </p>
               </div>
             </div>

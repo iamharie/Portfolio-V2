@@ -73,7 +73,7 @@ const ResetPassword = () => {
 
       // Redirect to login after 2 seconds
       setTimeout(() => {
-        navigate("/staystrong/closed-access", { replace: true });
+        navigate("/staystrong", { replace: true });
       }, 2000);
     } catch (err) {
       setErrors((prev) => ({

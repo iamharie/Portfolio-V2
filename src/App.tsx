@@ -1,4 +1,3 @@
-// import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ThemeProvider } from "./context/ThemeContext";
 import Home from "./pages/Home";
@@ -11,9 +10,11 @@ import Workout from "./components/staystrong/workout/workout";
 import VerifyEmail from "./components/staystrong/pages/VerifyEmail";
 import ForgotPassword from "./components/staystrong/pages/ForgotPassword";
 import ResetPassword from "./components/staystrong/pages/ResetPassword";
-
+import Nutrition from "./components/staystrong/nutrition/nutrition";
+import StayStrongLanding from "./components/staystrong/StayStrongLanding";
 import ProtectedRoute from "./auth/ProtectedRoute";
 import Root from "./pages/Root";
+import StayStrongLogin from "./components/staystrong/StayStrongLogin";
 
 export default function App() {
   const router = createBrowserRouter([
@@ -25,8 +26,9 @@ export default function App() {
         { path: "experience", element: <Experience /> },
         { path: "team", element: <ProjectPage /> },
         { path: "contact", element: <ContactPage /> },
-        { path: "staystrong", element: <StayStrongFallback /> },
 
+        // { path: "staystrong", element: <StayStrongFallback /> },
+        { path: "staystrong", element: <StayStrongPage /> },
         { path: "staystrong/forgot-password", element: <ForgotPassword /> },
         { path: "reset-password", element: <ResetPassword /> },
         // ✅ Email verification (PUBLIC)
@@ -36,11 +38,15 @@ export default function App() {
         {
           path: "staystrong/app",
           element: <ProtectedRoute />,
-          children: [{ index: true, element: <Workout /> }],
+          children: [
+            {
+              index: true,
+              element: <StayStrongLanding />,
+            },
+          ],
         },
-
         // Beta testing route (for closed users)
-        { path: "staystrong/closed-access", element: <StayStrongPage /> },
+        { path: "staystrong/closed-access", element: <Nutrition /> },
       ],
     },
   ]);

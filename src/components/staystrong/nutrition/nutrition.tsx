@@ -73,7 +73,6 @@ const Nutrition: React.FC = () => {
     },
   });
 
-  // const [customRegionInput, setCustomRegionInput] = useState("");
   const [nativeCustomInput, setNativeCustomInput] = useState("");
   const [currentCustomInput, setCurrentCustomInput] = useState("");
   const [allergyInput, setAllergyInput] = useState("");
@@ -110,12 +109,6 @@ const Nutrition: React.FC = () => {
           );
         }
       case 4:
-        // Validate that if "Other" is selected, custom input is provided
-        // if (formData.region === "Other") {
-        //   return customRegionInput.trim() !== "";
-        // }
-        // return formData.region !== "";
-        // Validate native region
         if (formData.region.nativeRegion === "") return false;
         if (
           formData.region.nativeRegion === "Other" &&
@@ -688,43 +681,6 @@ const Nutrition: React.FC = () => {
             )}
           </div>
         );
-
-      // case 5:
-      //   return (
-      //     <div className="space-y-6">
-      //       <h2 className="text-3xl font-bold text-accent mb-2">
-      //         Training Experience
-      //       </h2>
-      //       <p className="text-sm text-gray-500 mb-4">
-      //         This helps us adjust calories & protein correctly
-      //       </p>
-      //       <div className="space-y-3">
-      //         {[
-      //           "Less than 6 months",
-      //           "6–12 months",
-      //           "1–2 years",
-      //           "2+ years",
-      //         ].map((exp) => (
-      //           <button
-      //             key={exp}
-      //             type="button"
-      //             onClick={() =>
-      //               setFormData({ ...formData, trainingExperience: exp })
-      //             }
-      //             className={`w-full p-4 rounded-lg border-2 text-left transition-all ${
-      //               formData.trainingExperience === exp
-      //                 ? "border-accent bg-accent/10"
-      //                 : "border-secondary dark:border-secondary-light hover:border-accent/50"
-      //             }`}
-      //           >
-      //             <span className="font-semibold text-text-light dark:text-text-dark">
-      //               {exp}
-      //             </span>
-      //           </button>
-      //         ))}
-      //       </div>
-      //     </div>
-      //   );
       case 5:
         const trainingTypes = [
           {

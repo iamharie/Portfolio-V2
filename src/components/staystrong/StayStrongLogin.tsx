@@ -98,9 +98,6 @@ const StayStrongLogin: React.FC<TestPageProps> = ({ onEmailSubmit }) => {
             <h1 className="text-5xl font-bold mb-4 text-accent">
               StayStrong 💪🏼
             </h1>
-            <p className="text-xl text-text-light dark:text-text-dark">
-              ⚠️ Work In Progress ⚠️
-            </p>
           </div>
 
           {/* Mode toggle */}
@@ -174,7 +171,7 @@ const StayStrongLogin: React.FC<TestPageProps> = ({ onEmailSubmit }) => {
                 htmlFor="email"
                 className="block text-sm font-medium mb-2 text-text-light dark:text-text-dark"
               >
-                Email Address
+                Email
               </label>
               <input
                 type="email"

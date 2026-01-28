@@ -83,7 +83,7 @@ const ForgotPassword = () => {
                 htmlFor="email"
                 className="block text-sm font-medium mb-2 text-text-light dark:text-text-dark"
               >
-                Email Address
+                Email
               </label>
               <input
                 type="email"

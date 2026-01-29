@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaDumbbell, FaAppleAlt } from "react-icons/fa";
+import { FaDumbbell, FaAppleAlt, FaMars, FaVenus } from "react-icons/fa";
 import Nutrition from "./nutrition/nutrition";
 import {
   mensBeginnerWorkoutDays,
@@ -63,7 +63,7 @@ const StayStrongLanding: React.FC = () => {
   };
 
   return (
-    <div className="py-16">
+    <div className="py-12 sm:py-16">
       <div className="container mx-auto px-4">
         {/* Dashboard Tab Content */}
         {activeTab === "dashboard" && (
@@ -138,13 +138,15 @@ const StayStrongLanding: React.FC = () => {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="mb-4">
-                <button
+              <div className="mb-4 sm:mb-6">
+                <motion.button
                   onClick={handleBackToDashboard}
-                  className="px-6 py-2 bg-secondary-light dark:bg-secondary text-accent rounded-lg hover:bg-secondary dark:hover:bg-secondary-light transition-colors font-semibold"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-3 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm bg-secondary-light dark:bg-secondary text-accent rounded-lg hover:bg-secondary dark:hover:bg-secondary-light transition-colors font-semibold"
                 >
                   ← Back to Dashboard
-                </button>
+                </motion.button>
               </div>
               <StayStrongFallback />
               {/* <Nutrition /> */}
@@ -208,7 +210,8 @@ const GenderLevelSelector: React.FC<GenderLevelSelectorProps> = ({
           Select Your Profile
         </h2>
         <p className="text-sm sm:text-lg text-text-light dark:text-text-dark">
-          Choose your gender and fitness level to customize your workout
+          Choose your gender and fitness level to start with the right strength
+          training blocks
         </p>
       </div>
 
@@ -232,8 +235,12 @@ const GenderLevelSelector: React.FC<GenderLevelSelectorProps> = ({
                     : "border-secondary dark:border-secondary-light text-text-light dark:text-text-dark hover:border-accent/50"
                 }`}
               >
-                <div className="text-xl sm:text-3xl mb-1 sm:mb-2">
-                  {gender === "male" ? "👨" : "👩"}
+                <div className="text-xl sm:text-3xl mb-1 sm:mb-2 flex justify-center">
+                  {gender === "male" ? (
+                    <FaMars className="text-blue-500" />
+                  ) : (
+                    <FaVenus className="text-pink-500" />
+                  )}
                 </div>
                 {gender}
               </motion.button>
@@ -399,21 +406,32 @@ const WorkoutWithBackButton: React.FC<WorkoutWithBackButtonProps> = ({
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3 }}
     >
-      <div className="mb-6">
-        <button
+      <div className="mb-4 sm:mb-6">
+        <motion.button
           onClick={onBack}
-          className="px-6 py-2 bg-secondary-light dark:bg-secondary text-accent rounded-lg hover:bg-secondary dark:hover:bg-secondary-light transition-colors font-semibold"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="px-3 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm bg-secondary-light dark:bg-secondary text-accent rounded-lg hover:bg-secondary dark:hover:bg-secondary-light transition-colors font-semibold"
         >
           ← Back to Profile Selection
-        </button>
+        </motion.button>
       </div>
 
       <div className="text-center mb-8">
-        <h1 className="text-5xl font-bold mb-4 text-accent">
-          {gender === "male" ? "👨" : "👩"} {workoutPlan.level} Workout
-        </h1>
-        <p className="text-xl text-text-light dark:text-text-dark capitalize">
-          {gender} • {level}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 mb-2">
+          <div className="text-3xl sm:text-5xl">
+            {gender === "male" ? (
+              <FaMars className="text-blue-500" />
+            ) : (
+              <FaVenus className="text-pink-500" />
+            )}
+          </div>
+          <h1 className="text-2xl sm:text-4xl font-bold text-accent">
+            {workoutPlan.level} Strength Training Program
+          </h1>
+        </div>
+        <p className="text-xs sm:text-lg text-text-light dark:text-text-dark capitalize">
+          Designed for {gender} lifters
         </p>
       </div>
 

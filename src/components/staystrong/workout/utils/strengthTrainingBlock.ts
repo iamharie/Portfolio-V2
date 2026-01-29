@@ -7,6 +7,7 @@ export const mensBeginnerWorkoutDays: WorkoutDay[] = [
   {
     day: "Day 1",
     variations: "Upper Body (Push + Pull)",
+    link: "https://link.strong.app/awxpazgn",
     exercises: [
       {
         id: "b1-1",
@@ -87,6 +88,7 @@ export const mensBeginnerWorkoutDays: WorkoutDay[] = [
   {
     day: "Day 2",
     variations: "Lower Body",
+    link: "https://link.strong.app/vktvhbej",
     exercises: [
       {
         id: "b2-1",
@@ -157,6 +159,7 @@ export const mensBeginnerWorkoutDays: WorkoutDay[] = [
   {
     day: "Day 3",
     variations: "Upper Body (Back + Shoulders)",
+    link: "https://link.strong.app/mgwxwmha",
     exercises: [
       {
         id: "b3-1",
@@ -237,6 +240,7 @@ export const mensBeginnerWorkoutDays: WorkoutDay[] = [
   {
     day: "Day 4",
     variations: "Lower Body + Core",
+    link: "https://link.strong.app/ckfulcgr",
     exercises: [
       {
         id: "b4-1",
@@ -783,6 +787,7 @@ export const womensBeginnerWorkoutDays: WorkoutDay[] = [
   {
     day: "Day 1",
     variations: "Glutes & Legs",
+    link: "https://link.strong.app/ulxizcyh",
     exercises: [
       {
         id: "bw1-1",
@@ -853,6 +858,7 @@ export const womensBeginnerWorkoutDays: WorkoutDay[] = [
   {
     day: "Day 2",
     variations: "Upper Body (Back + Arms)",
+    link: "https://link.strong.app/vbawwsiz",
     exercises: [
       {
         id: "bw2-1",
@@ -923,6 +929,7 @@ export const womensBeginnerWorkoutDays: WorkoutDay[] = [
   {
     day: "Day 3",
     variations: "Glutes / Hamstrings + Core",
+    link: "https://link.strong.app/xkgghdaq",
     exercises: [
       {
         id: "bw3-1",
@@ -993,6 +1000,7 @@ export const womensBeginnerWorkoutDays: WorkoutDay[] = [
   {
     day: "Day 4",
     variations: "Upper Body + Core",
+    link: "https://link.strong.app/hrsaipaw",
     exercises: [
       {
         id: "bw4-1",

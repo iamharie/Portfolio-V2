@@ -94,8 +94,8 @@ const Recommendations = () => {
                   animate="center"
                   exit="exit"
                   transition={{
-                    x: { type: "spring", stiffness: 300, damping: 30 },
-                    opacity: { duration: 0.2 },
+                    x: { type: "spring", stiffness: 400, damping: 35 },
+                    opacity: { duration: 0.1 },
                   }}
                   drag="x"
                   dragConstraints={{ left: 0, right: 0 }}

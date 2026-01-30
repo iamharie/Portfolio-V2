@@ -24,7 +24,7 @@ export const recommendations: Recommendation[] = [
     company: "Verizon",
     relationship: "Senior leader to Hariharan; collaborated cross-functionally",
     testimonial:
-      "I really enjoyed collaborating with Hari, particularly on UI design patterns and implementation discussions. His attentiveness, strong UI perspective, and hands-on support were instrumental to the development of our features and the overall success of the CO and CXM applications. \n\n Hari consistently elevated the work of the entire team through his collaboration with me, Tabitha, Adam, and Scott, and he brought clarity and thoughtfulness to every discussion.",
+      "Hari is an exceptional developer and collaborator who consistently brought thoughtfulness and precision to our internal applications. He has a strong eye for UI design and usability, and he was deeply attentive to implementation details that directly improved feature quality and user experience. \n\n Hari also played a key role in providing perspectives prior to feature implementation, asking the right questions and helping translate ideas into practical solutions. His technical insight and collaborative approach made him an invaluable partner throughout our work together, and I would gladly recommend him to any team. \n\nGeorge Avila\nSystems Integration and Design\n",
     linkedinUrl: "https://www.linkedin.com/in/venkata-ganji-43b3b2b1/",
   },
   {

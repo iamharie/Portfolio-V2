@@ -12,6 +12,7 @@ import image11 from "../../assets/projectCover/Eleven-weatherApp.png";
 import image12 from "../../assets/projectCover/Twelve-portfolio.png";
 import resumeBuilder from "../../assets/projectCover/resumeBuilder.png";
 import fitCoachAi from "../../assets/projectCover/fitCoachAi.png";
+import StayStrong from "../../assets/projectCover/StayStrong.webp";
 
 export const projectContent = `Explore my curated portfolio of projects, showcasing innovative
             solutions, modern design, and technical expertise across front-end,
@@ -33,10 +34,20 @@ const projectCover = {
   image10: image10,
   resumeBuilder: resumeBuilder,
   fitCoachAi: fitCoachAi,
+  StayStrong: StayStrong,
 };
 
 // export default projectCover;
 const projectDetails = [
+  {
+    image: projectCover.StayStrong,
+    name: "StayStrong",
+    // position: "Deployed",
+    description:
+      "StayStrong is a production-grade full-stack fitness web application used by real users. \nBuilt as a scalable MVP using React, TypeScript, Vite, Tailwind CSS, Node.js, Express, PostgreSQL, and Prisma, and deployed in production via Netlify and Railway following real-world engineering practices.",
+    github: "https://github.com/iamharie/Portfolio-V2",
+    url: "https://hariharanmohan.netlify.app/staystrong",
+  },
   {
     image: projectCover.fitCoachAi,
     name: "AI Meal Planner",
@@ -48,7 +59,7 @@ const projectDetails = [
   },
   {
     image: projectCover.resumeBuilder,
-    name: "AI Resume Builder; Work In Progress",
+    name: "AI Resume Builder",
     // position: "Deployed",
     description:
       "Resume Builder with OpenAI API: Get a Tailored Resume Delivered to Your Inbox in One Click",

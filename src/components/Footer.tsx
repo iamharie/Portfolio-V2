@@ -26,7 +26,7 @@ const Footer = () => {
             <h3 className="text-xl font-bold mb-4">Follow Me</h3>
             <div className="flex space-x-4">
               <a
-                href="https://www.linkedin.com/in/hariee/"
+                href="https://www.linkedin.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex flex-col items-center hover:text-accent transition-colors cursor-pointer"

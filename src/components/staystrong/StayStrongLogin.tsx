@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { loginUser, registerUser } from "../../api/auth";
 
 type FormMode = "login" | "register";
@@ -20,6 +21,7 @@ const StayStrongLogin: React.FC<TestPageProps> = ({ onEmailSubmit }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [mode, setMode] = useState<FormMode>("login");
   const [errors, setErrors] = useState<Errors>({});
   const [isLoading, setIsLoading] = useState(false);
@@ -194,6 +196,7 @@ const StayStrongLogin: React.FC<TestPageProps> = ({ onEmailSubmit }) => {
             </div>
 
             {/* Password */}
+            {/* add password visiblity for user to toggle */}
             <div className="mb-6">
               <label
                 htmlFor="password"
@@ -201,19 +204,34 @@ const StayStrongLogin: React.FC<TestPageProps> = ({ onEmailSubmit }) => {
               >
                 Password
               </label>
-              <input
-                type="password"
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg border border-secondary dark:border-secondary-light bg-white dark:bg-gray-800 text-text-light dark:text-text-dark focus:outline-none focus:ring-2 focus:ring-accent transition-all"
-                placeholder={
-                  mode === "login"
-                    ? "Enter your password"
-                    : "Create a password (min 6 chars)"
-                }
-                disabled={isLoading}
-              />
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full px-4 py-3 pr-12 rounded-lg border border-secondary dark:border-secondary-light bg-white dark:bg-gray-800 text-text-light dark:text-text-dark focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                  placeholder={
+                    mode === "login"
+                      ? "Enter your password"
+                      : "Create a password (min 6 chars)"
+                  }
+                  disabled={isLoading}
+                />
+                {/* Eye Icon Button */}
+                <motion.button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-text-light dark:text-text-dark hover:text-accent transition-colors"
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                >
+                  {showPassword ? (
+                    <FaEyeSlash size={20} />
+                  ) : (
+                    <FaEye size={20} />
+                  )}
+                </motion.button>
+              </div>
               {errors.password && (
                 <motion.p
                   initial={{ opacity: 0, y: -10 }}

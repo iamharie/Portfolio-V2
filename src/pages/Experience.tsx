@@ -19,7 +19,7 @@ interface Education {
 
 const Experience = () => {
   return (
-    <section className="py-20 bg-primary-light dark:bg-primary min-h-screen">
+    <section className="py-20 min-h-screen">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

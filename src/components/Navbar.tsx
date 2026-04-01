@@ -19,7 +19,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-secondary-light dark:bg-secondary text-text-light dark:text-text-dark py-4 sticky top-0 z-50">
+    <nav className="bg-secondary-light/80 dark:bg-secondary/80 backdrop-blur-md text-text-light dark:text-text-dark py-4 sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           <NavLink to="/" className="text-2xl font-bold">
@@ -125,7 +125,7 @@ const Navbar = () => {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.2 }}
-              className="md:hidden absolute left-0 right-0 top-full bg-primary-light dark:bg-primary shadow-lg"
+              className="md:hidden absolute left-0 right-0 top-full bg-primary-light/85 dark:bg-primary/85 backdrop-blur-md shadow-lg"
             >
               <div className="flex flex-col space-y-4 p-4">
                 <NavLink

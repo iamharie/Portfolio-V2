@@ -4,7 +4,7 @@ import Recommendations from "./Recommendations";
 
 const About = () => {
   return (
-    <section className="py-20 bg-primary-light dark:bg-primary">
+    <section className="py-20">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

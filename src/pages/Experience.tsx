@@ -28,28 +28,23 @@ function WorkCard({ job }: { job: JobDetails }) {
                     hover:-translate-y-1 hover:shadow-xl hover:shadow-accent/10
                     hover:bg-secondary-light/80 dark:hover:bg-secondary/80
                     transition-all duration-300 cursor-default">
-      <div className="flex items-start justify-between gap-3 flex-wrap">
-        <div>
-          <h2 className="text-base font-bold leading-snug text-text-light dark:text-text-dark">
-            {job.title}
-          </h2>
-          <p className="text-accent text-sm font-semibold mt-1">{job.role}</p>
-        </div>
-
-        <span className={`flex items-center gap-1.5 text-xs px-3 py-1 rounded-full font-medium shrink-0 ${
-          isCurrent
-            ? "bg-green-500/15 text-green-500 dark:text-green-400"
-            : "bg-accent/10 text-accent"
-        }`}>
-          {isCurrent && (
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500" />
-            </span>
-          )}
-          {job.description?.replace("🟢", "").trim()}
-        </span>
-      </div>
+      <h2 className="text-base font-bold leading-snug text-text-light dark:text-text-dark">
+        {job.title}
+      </h2>
+      <p className="text-accent text-sm font-semibold mt-1">{job.role}</p>
+      <span className={`inline-flex items-center gap-1.5 text-xs px-3 py-1 rounded-full font-medium mt-3 ${
+        isCurrent
+          ? "bg-green-500/15 text-green-500 dark:text-green-400"
+          : "bg-accent/10 text-accent"
+      }`}>
+        {isCurrent && (
+          <span className="relative flex h-1.5 w-1.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500" />
+          </span>
+        )}
+        {job.description?.replace("🟢", "").trim()}
+      </span>
     </div>
   );
 }
@@ -62,17 +57,13 @@ function EduCard({ edu }: { edu: Education }) {
                     hover:-translate-y-1 hover:shadow-xl hover:shadow-accent/10
                     hover:bg-secondary-light/80 dark:hover:bg-secondary/80
                     transition-all duration-300 cursor-default">
-      <div className="flex items-start justify-between gap-3 flex-wrap">
-        <div>
-          <h2 className="text-base font-bold leading-snug text-text-light dark:text-text-dark">
-            {edu.instution}
-          </h2>
-          <p className="text-accent text-sm font-semibold mt-1">{edu.course}</p>
-        </div>
-        <span className="text-xs px-3 py-1 rounded-full bg-accent/10 text-accent font-medium shrink-0">
-          {edu.period}
-        </span>
-      </div>
+      <h2 className="text-base font-bold leading-snug text-text-light dark:text-text-dark">
+        {edu.instution}
+      </h2>
+      <p className="text-accent text-sm font-semibold mt-1">{edu.course}</p>
+      <span className="inline-flex text-xs px-3 py-1 rounded-full bg-accent/10 text-accent font-medium mt-3">
+        {edu.period}
+      </span>
     </div>
   );
 }

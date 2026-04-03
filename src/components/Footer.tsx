@@ -25,7 +25,7 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-bold mb-4">Follow Me</h3>
             <div className="flex space-x-4">
-              <a
+              {/* <a
                 href="https://www.linkedin.com/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -33,7 +33,7 @@ const Footer = () => {
               >
                 <FaLinkedin size={20} />
                 <span className="mt-2 text-sm">LinkedIn</span>
-              </a>
+              </a> */}
               <a
                 href="https://github.com/iamharie"
                 target="_blank"

@@ -7,7 +7,7 @@ import TypewriterMotion from "./animation/TypewriterMotion";
 const Landing = () => {
   const navigate = useNavigate();
   function handleNavigate() {
-    navigate("/experience");
+    navigate("/contact");
   }
 
   return (
@@ -34,7 +34,7 @@ const Landing = () => {
               whileHover={{ scale: 1.1, backgroundColor: "bg-opacity-90" }}
               whileTap={{ scale: 0.95 }}
             >
-              View My Experience
+              Collaborate
             </motion.button>
             {/* <button
               onClick={handleNavigate}

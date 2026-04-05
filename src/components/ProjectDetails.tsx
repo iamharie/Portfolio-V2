@@ -13,58 +13,70 @@ interface ProjectDetailsProps {
   index: number;
 }
 
-const ProjectDetails: React.FC<ProjectDetailsProps> = ({ member, index }) => {
+const ProjectDetails: React.FC<ProjectDetailsProps> = ({ member }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.1, duration: 0.3 }}
-      viewport={{ once: true }}
-      className="bg-secondary-light dark:bg-secondary rounded-lg overflow-hidden shadow-lg"
+    <div
+      className="bg-secondary-light/50 dark:bg-secondary/50 backdrop-blur-sm
+                 border border-secondary-light dark:border-secondary/70
+                 border-l-[3px] border-l-accent rounded-2xl overflow-hidden
+                 hover:-translate-y-1 hover:shadow-xl hover:shadow-accent/10
+                 hover:bg-secondary-light/80 dark:hover:bg-secondary/80
+                 transition-all duration-300"
     >
-      {/* <div className="aspect-w-1 aspect-h-1"> */}
-      <div className="w-full h-64">
+      {/* Project image */}
+      <div className="w-full h-44 overflow-hidden">
         <img
-          src={
-            member.image ||
-            "https://via.placeholder.com/300x300?text=Team+Member"
-          }
+          src={member.image || "https://via.placeholder.com/600x300?text=Project"}
           alt={member.name}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity duration-300"
         />
       </div>
-      <div className="p-6">
-        <h3 className="text-xl font-bold text-text-light dark:text-text-dark mb-2">
+
+      {/* Content */}
+      <div className="p-5">
+        <h3 className="text-base font-bold leading-snug text-text-light dark:text-text-dark">
           {member.name}
         </h3>
-        <p className="text-text-light dark:text-text-dark mb-2">
-          {member.position}
-        </p>
-        <p className="text-text-light/80 dark:text-text-dark/80 text-sm mb-4">
+
+        {member.position && (
+          <p className="text-accent text-sm font-semibold mt-1">{member.position}</p>
+        )}
+
+        <p className="text-text-light/70 dark:text-text-dark/70 text-sm mt-2 leading-relaxed line-clamp-3">
           {member.description}
         </p>
-        <div className="flex space-x-4">
-          <a
-            href={member.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-text-light dark:text-text-dark hover:text-accent transition-colors"
-          >
-            <FaGithub size={24} />
-          </a>
 
+        {/* Links */}
+        <div className="flex items-center gap-3 mt-4">
+          {member.github && (
+            <a
+              href={member.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full
+                         bg-accent/10 text-accent font-medium
+                         hover:bg-accent hover:text-white transition-all duration-200"
+            >
+              <FaGithub size={13} />
+              GitHub
+            </a>
+          )}
           {member.url && (
             <a
               href={member.url}
               target="_blank"
-              className="text-text-light dark:text-text-dark hover:text-accent transition-colors"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full
+                         bg-accent/10 text-accent font-medium
+                         hover:bg-accent hover:text-white transition-all duration-200"
             >
-              <FaExternalLinkSquareAlt size={24} />
+              <FaExternalLinkSquareAlt size={13} />
+              Live
             </a>
           )}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

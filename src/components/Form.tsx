@@ -74,7 +74,10 @@ export default function Form() {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className="w-full p-3 rounded bg-secondary-light dark:bg-secondary text-text-light dark:text-text-dark"
+            className="w-full p-3 rounded-lg bg-secondary-light/50 dark:bg-secondary/50 backdrop-blur-sm
+                       border border-secondary-light dark:border-secondary/70
+                       text-text-light dark:text-text-dark placeholder:text-text-light/40 dark:placeholder:text-text-dark/40
+                       focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/40 transition-all duration-200"
             placeholder="Your name"
             required
           />
@@ -86,7 +89,10 @@ export default function Form() {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full p-3 rounded bg-secondary-light dark:bg-secondary text-text-light dark:text-text-dark"
+            className="w-full p-3 rounded-lg bg-secondary-light/50 dark:bg-secondary/50 backdrop-blur-sm
+                       border border-secondary-light dark:border-secondary/70
+                       text-text-light dark:text-text-dark placeholder:text-text-light/40 dark:placeholder:text-text-dark/40
+                       focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/40 transition-all duration-200"
             placeholder="Your email"
             required
           />
@@ -97,7 +103,10 @@ export default function Form() {
             name="message"
             value={formData.message}
             onChange={handleChange}
-            className="w-full p-3 rounded bg-secondary-light dark:bg-secondary text-text-light dark:text-text-dark h-32"
+            className="w-full p-3 rounded-lg bg-secondary-light/50 dark:bg-secondary/50 backdrop-blur-sm
+                       border border-secondary-light dark:border-secondary/70
+                       text-text-light dark:text-text-dark placeholder:text-text-light/40 dark:placeholder:text-text-dark/40
+                       focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/40 transition-all duration-200 h-32 resize-none"
             placeholder="Your message"
             required
           ></textarea>

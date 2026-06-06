@@ -1,8 +1,14 @@
 export const jobDetails = [
   {
+    title: "Expedia Group",
+    role: "Software Development Engineer",
+    description: "May 2026 - Present",
+    icon: "🏢",
+  },
+  {
     title: "Surge Technology Solutions (Client: Verizon)",
     role: "Software Developer",
-    description: "Aug 2024 - Present",
+    description: "Aug 2024 - Apr 2026",
     icon: "🏢",
   },
   {

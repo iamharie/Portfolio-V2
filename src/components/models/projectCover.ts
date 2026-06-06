@@ -75,14 +75,14 @@ const projectDetails = [
     github: "https://github.com/iamharie/Etezazi-Industries",
     url: "https://etezazi-interview.netlify.app/",
   },
-  {
-    image: projectCover.image12,
-    name: "Portfolio",
-    // position: "Deployed",
-    description: "A portfolio website built with HTML5, CSS3 and Javascript",
-    github: "https://github.com/iamharie/My-Portfolio",
-    url: "https://hariharanmohan-portfolio.netlify.app ",
-  },
+  // {
+  //   image: projectCover.image12,
+  //   name: "Portfolio",
+  //   // position: "Deployed",
+  //   description: "A portfolio website built with HTML5, CSS3 and Javascript",
+  //   github: "https://github.com/iamharie/My-Portfolio",
+  //   url: "https://hariharanmohan-portfolio.netlify.app ",
+  // },
   {
     image: projectCover.image2,
     name: "Online Shopping Cart",
@@ -118,58 +118,58 @@ const projectDetails = [
     github: "https://github.com/iamharie/weather-app",
     url: "https://haricast.netlify.app/",
   },
-  {
-    image: projectCover.image5,
-    name: "Location Picker",
-    // position: "",
-    description:
-      "A location picker built with React, Google Maps API and Tailwind CSS.",
-    github: "https://github.com/iamharie/location-picker",
-    // url: "",
-  },
-  {
-    image: projectCover.image6,
-    name: "Final Count Down",
-    // position: "",
-    description:
-      "A final count down timer built with React, Tailwind CSS and Javascript.",
-    github: "https://github.com/iamharie/Final-Count-Down",
-    // url: "",
-  },
-  {
-    image: projectCover.image7,
-    name: "The Form",
-    // position: "Deployed",
-    description: "A login form built with HTML5, CSS3, Javascript.",
-    github: "https://github.com/iamharie/loginScreen",
-    url: "https://harisloginscreen.netlify.app",
-  },
-  {
-    image: projectCover.image8,
-    name: "Quiz App",
-    // position: "",
-    description:
-      "A quiz app built with React, Tailwind CSS and Open Trivia API.",
-    github: "https://github.com/iamharie/quiz-app",
-    // url: "",
-  },
-  {
-    image: projectCover.image9,
-    name: "Tic Tac Toe",
-    // position: "",
-    description:
-      "A tic tac toe game built with React, Tailwind CSS and Javascript.",
-    github: "https://github.com/iamharie/Tic-Tac-Toe",
-    // url: "",
-  },
-  {
-    image: projectCover.image10,
-    name: "To Do List",
-    // position: "",
-    description: "A to do list built with HTML5, CSS3 and Javascript.",
-    github: "https://github.com/iamharie/Quick-List",
-    // url: "",
-  },
+  // {
+  //   image: projectCover.image5,
+  //   name: "Location Picker",
+  //   // position: "",
+  //   description:
+  //     "A location picker built with React, Google Maps API and Tailwind CSS.",
+  //   github: "https://github.com/iamharie/location-picker",
+  //   // url: "",
+  // },
+  // {
+  //   image: projectCover.image6,
+  //   name: "Final Count Down",
+  //   // position: "",
+  //   description:
+  //     "A final count down timer built with React, Tailwind CSS and Javascript.",
+  //   github: "https://github.com/iamharie/Final-Count-Down",
+  //   // url: "",
+  // },
+  // {
+  //   image: projectCover.image7,
+  //   name: "The Form",
+  //   // position: "Deployed",
+  //   description: "A login form built with HTML5, CSS3, Javascript.",
+  //   github: "https://github.com/iamharie/loginScreen",
+  //   url: "https://harisloginscreen.netlify.app",
+  // },
+  // {
+  //   image: projectCover.image8,
+  //   name: "Quiz App",
+  //   // position: "",
+  //   description:
+  //     "A quiz app built with React, Tailwind CSS and Open Trivia API.",
+  //   github: "https://github.com/iamharie/quiz-app",
+  //   // url: "",
+  // },
+  // {
+  //   image: projectCover.image9,
+  //   name: "Tic Tac Toe",
+  //   // position: "",
+  //   description:
+  //     "A tic tac toe game built with React, Tailwind CSS and Javascript.",
+  //   github: "https://github.com/iamharie/Tic-Tac-Toe",
+  //   // url: "",
+  // },
+  // {
+  //   image: projectCover.image10,
+  //   name: "To Do List",
+  //   // position: "",
+  //   description: "A to do list built with HTML5, CSS3 and Javascript.",
+  //   github: "https://github.com/iamharie/Quick-List",
+  //   // url: "",
+  // },
 ];
 
 export default projectDetails;

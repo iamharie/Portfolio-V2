@@ -6,7 +6,7 @@ export const jobDetails = [
     icon: "🏢",
   },
   {
-    title: "Surge Technology Solutions (Client: Verizon)",
+    title: "Verizon",
     role: "Software Developer",
     description: "Aug 2024 - Apr 2026",
     icon: "🏢",
@@ -17,18 +17,18 @@ export const jobDetails = [
     description: "May 2024 - Jul 2024",
     icon: "🏢",
   },
-  {
-    title: "Wichita State University",
-    role: "Graduate Research Assistant",
-    description: "Jun 2023 - May 2024",
-    icon: "👨🏻‍🎓",
-  },
-  {
-    title: "Wichita State University",
-    role: "Student Technician",
-    description: "Jan 2023 - May 2023",
-    icon: "👨🏻‍🎓",
-  },
+  // {
+  //   title: "Wichita State University",
+  //   role: "Graduate Research Assistant",
+  //   description: "Jun 2023 - May 2024",
+  //   icon: "👨🏻‍🎓",
+  // },
+  // {
+  //   title: "Wichita State University",
+  //   role: "Student Technician",
+  //   description: "Jan 2023 - May 2023",
+  //   icon: "👨🏻‍🎓",
+  // },
   {
     title: "Surge IT Technology Solutions",
     role: "Software Engineer",
